@@ -1,0 +1,681 @@
+/* 🌟 Generale */
+body {
+    font-family: arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #00000036;
+}
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+}
+
+/* 🏠 Header */
+header {
+    background-image: url('img/background-header.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: #ffffff;
+    padding: 10px 0;
+}
+
+header .logo {
+    vertical-align: middle;
+}
+
+header nav ul {
+    list-style: none;
+    text-align: right;
+    padding: 0;
+}
+
+header nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+header nav ul li a {
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+header nav ul li a:hover {
+    background-color: #333;
+    color: #fff;
+    padding: 5px;
+    border-radius: 10px;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+header h1 {
+    text-align: center;
+    font-size: 2.5em;
+    margin: 0;
+    padding: 20px 0;
+    color: #fff;
+}
+
+/* 🍪 Banner dei cookie */
+.cookie-banner {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 10px;
+    text-align: center;
+    border-radius: 8px;
+    display: none; /* Inizialmente nascosto */
+}
+
+.cookie-banner button {
+    margin: 5px;
+    padding: 6px 12px;
+    border: none;
+    cursor: pointer;
+}
+
+#acceptCookies {
+    background: green;
+    color: white;
+}
+
+#declineCookies {
+    background: red;
+    color: white;
+}
+
+
+
+/*menù a tendina*/
+/* Stile generale */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Stile per il dropdown */
+.dropdown {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.dropbtn {
+    background-color: #333;
+    color: white;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top:calc(100% + 10px);
+    background-color: #f4f4f4;
+    min-width: 160px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+    border-radius: 5px;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 10px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #B8860B; /* Effetto dorato */
+    color: white
+    
+
+}
+
+/* Mostra il menù al passaggio del mouse */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+
+
+
+/*SEZIONE I NOSTRI SERVIZI*/
+.slider-container {
+    position: relative;
+    width: 80%;
+    max-width: 800px;
+    margin: auto;
+    overflow: hidden;
+}
+
+.slider {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    scroll-behavior: smooth;
+}
+.slide.clone {
+    display: none;
+}
+
+.slide {
+    min-width: 100%;
+    text-align: center;
+}
+
+.slide img {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* Pulsanti di navigazione */
+.nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+#prevSlide {
+    left: 10px;
+}
+
+#nextSlide {
+    right: 10px;
+}
+
+/* Modali */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    text-align: center;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    width: 60%;
+    margin: 10% auto;
+    border-radius: 8px;
+}
+
+.slider {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    scroll-behavior: smooth;
+}
+
+
+/* 🎯 Sezioni principali */
+.hero {
+    color: #000;
+    text-align: center;
+    padding: 50px 0;
+    background-color: rgba(173, 163, 163, 0.323);
+
+}
+
+.about, .services, .contact, .photo, .preventivo {
+    padding: 20px 0;
+    h2{
+        border-bottom: 2px solid #333;
+    }
+    text-align: left;
+}
+
+.services, .contact {
+    background-color: #f4af0094;
+}
+
+
+
+
+/* 🏷️ Titolo Foto Lavori */
+.photo {
+    background-color: #ebbe3754;
+
+}
+
+
+/* 🔎 Filtro */
+#filterForm {
+    display: flex;
+    gap: 5px;
+    padding: 5px;
+    background-color: #f4f4f4;
+    border: 2px solid #333;
+    border-radius: 20px;
+    max-width: 200px;
+    margin: 10px auto;
+    justify-content: center;
+}
+/* 🖼️ Galleria di immagini */
+.photo-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.custom-image {
+    cursor: pointer;
+    border: 2px solid #333;
+    padding: 5px;
+    background-color: #fff;
+    border-radius: 20px;
+    width: 200px;
+    height: 200px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* 🔍 Effetto Hover */
+.custom-image:hover {
+    transform: scale(1.5);
+    z-index: 10;
+}
+
+/* 📷 Modal per immagini */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 200;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    text-align: center;
+    padding-top: 50px;
+}
+
+.modal-content {
+    max-width: 100%; /* Riduce le dimensioni dell'immagine */
+    max-height: 70vh; /* Evita che l'immagine sia troppo alta */
+    display: block;
+    margin: auto; /* Centra perfettamente */
+    border-radius: 20px;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+}
+
+.close, .prev, .next {
+    position: absolute;
+    top: 50%;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.close {
+    top: 10px;
+    right: 20px;
+    font-size: 40px;
+}
+
+.prev {
+    left: 20px;
+}
+
+.next {
+    right: 20px;
+}
+
+
+
+/* ❌ Pulsante di chiusura */
+.close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+}
+
+/* 🔄 Frecce di navigazione */
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    transform: translateY(-50%);
+}
+
+.prev { left: 10%; }
+.next { right: 10%; }
+
+.prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/*preventivo*/
+.preventivo {
+    background-color: #f4f4f4;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+}
+
+.preventivo h2 {
+    color: #333;
+    text-align: left;
+    margin-bottom: 15px;
+    padding-left: 20px;
+    border-bottom: 3px solid #333;
+}
+.input-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    
+}
+input, textarea {
+    padding: 10px;
+    border: 2px solid #333;
+    border-radius: 20px;
+    font-size: 16px;
+    width: 100%;
+    align-items: center;
+    box-sizing: border-box;
+    margin-left:20px;
+    transition: border-color 0.3s ease-in-out;
+}
+input:focus, textarea:focus {
+    border-color: #f4af00;
+    outline: none;
+    align-items: center;
+}
+button {
+    background-color: #333;
+    color: #fff;
+    padding: 12px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+    font-size: 16px;
+}
+button:hover {
+    background-color: #555;
+}
+
+/* tendina simulazione preventivo */
+#quoteForm {
+    display: none;
+}
+
+
+/*simulazione preventivo
+/*Stili base */
+
+.simulator-container {
+    background-color: #f9f5f0;
+    border-radius: 8px;
+    padding: 25px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    margin: 30px 0;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+select, input, textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+button {
+    background-color: #8B4513;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #A0522D;
+}
+
+.result-container {
+    display: none;
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    border-left: 5px solid #8B4513;
+}
+
+.price-breakdown {
+    margin-top: 20px;
+}
+
+.price-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px dashed #ddd;
+}
+
+.total-price {
+    font-size: 24px;
+    font-weight: bold;
+    color: #8B4513;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 2px solid #8B4513;
+}
+
+
+/* Stili responsive */
+@media (min-width: 768px) {
+    .form-columns {
+        display: flex;
+        gap: 20px;
+    }
+    
+    .form-column {
+        flex: 1;
+    }
+
+}
+/* 📱 Pulsante WhatsApp */
+.whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background-color:  white     /*#25D366*/;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+
+.whatsapp-float img {
+    width: 40px;
+    height: 40px;
+}
+
+.whatsapp-float:hover {
+    background-color: #1DA851;
+}
+
+
+
+
+
+
+/* 📞 Sezione Contatti */
+.contact h2 {
+    border-bottom: 2px solid #333;;
+}
+
+/* 🔽 Footer */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1px 0;
+}
+
+/* 📱 Responsività */
+@media (max-width: 768px) {
+    header nav ul { text-align: center; }
+    header nav ul li { display: block; margin-bottom: 10px; }
+    
+    .custom-image { width: 100%; max-width: 250px; margin: 10px auto; }
+}
+
+
+/* Popup style */
+.popup-container {
+    position: fixed;
+    bottom: 90px; /* Altezza sopra il pulsante di WhatsApp */
+    right: 20px;
+    background: white;
+    padding: 15px;
+    border-radius: 30px;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+    text-align: center;
+    display: none; /* Nascondiamo il pop-up all'inizio */
+    z-index: 1000;
+    width: 250px; /* Adatta la larghezza per non coprire troppo */
+}
+
+.popup-content p {
+    font-size: 18px;
+    color: #333;
+}
+
+
+/* Creazione della "nuvoletta" */
+.popup-container::after {
+    content: "";
+    position: absolute;
+    bottom: -10px; /* Posiziona la freccia sotto il pop-up */
+    right: 30px;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid white; /* Colore della nuvoletta */
+}
+
+.popup-button:hover {
+    background-color: #1DA851;
+}
+
+#close-popup {
+    background: #333;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+#close-popup:hover {
+    background: #555;
+}
+
+
+
+/* Pulsante WhatsApp */
+.whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background-color: #25D366;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+
+
+
+
+/* progression bar puntata*/
+.dots-container {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.dot.active {
+    background-color: #B8860B;
+    transform: scale(1.3);
+}
+
+
+
+
+
+
+
+
+
