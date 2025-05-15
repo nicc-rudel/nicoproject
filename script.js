@@ -4,19 +4,47 @@ document.addEventListener("DOMContentLoaded", function () {
     const banner = document.getElementById("cookieBanner");
     const acceptBtn = document.getElementById("acceptCookies");
     const declineBtn = document.getElementById("declineCookies");
+    const consent = document.getElementById("cookieConsent");
+    const closeConsentBtn = document.getElementById("closeConsent");
 
-    if (!localStorage.getItem("cookieAccepted")) {
+    function setCookie(name, value, days) {
+        let expires = "";
+        if (days) {
+            const date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "=" + value + expires + "; path=/";
+    }
+
+    function getCookie(name) {
+        const value = "; " + document.cookie;
+        const parts = value.split("; " + name + "=");
+        if (parts.length === 2) return parts.pop().split(";").shift();
+    }
+
+    if (!getCookie("cookieAccepted")) {
         banner.style.display = "block";
+        consent.style.display = "none";
+    } else {
+        banner.style.display = "none";
+        consent.style.display = "none"; // Assicura che la scritta sia nascosta
     }
 
     acceptBtn.addEventListener("click", function () {
-        localStorage.setItem("cookieAccepted", "true");
+        setCookie("cookieAccepted", "true", 1);
         banner.style.display = "none";
+        consent.style.display = "none"; // Nasconde subito la scritta
     });
 
     declineBtn.addEventListener("click", function () {
-        localStorage.setItem("cookieAccepted", "false");
+        setCookie("cookieAccepted", "false", 1);
         banner.style.display = "none";
+        consent.style.display = "none";
+    });
+
+    closeConsentBtn.addEventListener("click", function () {
+        consent.style.display = "none";
     });
 });
 
