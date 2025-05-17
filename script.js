@@ -186,7 +186,7 @@ document.getElementById("sendEmailBtn").addEventListener("click", function () {
     let subject = encodeURIComponent("Richiesta Preventivo - Luxury Wood");
     let body = encodeURIComponent(`Nome: ${name}\nEmail: ${email}\n\nMessaggio:\n${message}`);
 
-    window.location.href = `mailto:luxurywoodpavimenti@email.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:luxurywoodpavimenti@gmail.com?subject=${subject}&body=${body}`;
 });
 
 
