@@ -51,12 +51,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-
-
-
-
-
-
 document.getElementById("category").addEventListener("change", applyFilters);
 
 function applyFilters() {
@@ -192,8 +186,11 @@ document.getElementById("sendEmailBtn").addEventListener("click", function () {
     let subject = encodeURIComponent("Richiesta Preventivo - Luxury Wood");
     let body = encodeURIComponent(`Nome: ${name}\nEmail: ${email}\n\nMessaggio:\n${message}`);
 
-    window.location.href = `mailto:tuo@email.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:luxurywoodpavimenti@email.com?subject=${subject}&body=${body}`;
 });
+
+
+
 
 
 
@@ -244,48 +241,39 @@ document.addEventListener("DOMContentLoaded", function () {
     let roomShapeSelect = document.getElementById("roomShape");
     let accessoriesSelect = document.getElementById("accessories");
     let locationSelect = document.getElementById("location");
+    let notesInput = document.getElementById("notes");
     let calculateBtn = document.getElementById("calculateBtn");
+    let resetBtn = document.getElementById("resetBtn");
+    let downloadPdfBtn = document.getElementById("downloadBtn");
+    let sendQuoteBtn = document.getElementById("sendQuoteBtn");
+    let whatsappQuoteBtn = document.getElementById("whatsappQuoteBtn");
     let priceBreakdown = document.getElementById("priceBreakdown");
     let totalPrice = document.getElementById("totalPrice");
     let resultContainer = document.getElementById("resultContainer");
 
     // Prezzi fissi
     const woodPrices = {
-        rovere: 45,
-        noce: 60,
-        teak: 75,
-        doussie: 85,
-        pino: 35
+        rovere: 45, noce: 60, teak: 75, doussie: 85, pino: 35
     };
 
     const installationPrices = {
-        flottante: 15,
-        incollata: 25,
-        chiodata: 30
+        flottante: 15, incollata: 25, chiodata: 30
     };
 
     const subfloorPrices = {
-        cemento: 0,
-        gres: 5,
-        legno: 0,
-        irregolare: 8
+        cemento: 0, gres: 5, legno: 0, irregolare: 8
     };
 
     const roomShapePrices = {
-        rettangolare: 0,
-        complessa: 3
+        rettangolare: 0, complessa: 3
     };
 
     const locationPrices = {
-        urbano: 0,
-        extraurbano: 50,
-        montano: 100
+        urbano: 0, extraurbano: 50, montano: 100
     };
 
     const accessoryPrices = {
-        battiscopa: 10,
-        soglia: 25,
-        ventilazione: 15
+        battiscopa: 10, soglia: 25, ventilazione: 15
     };
 
     // Mostra il campo "Prezzo personalizzato" se selezionato "Altro"
@@ -317,14 +305,10 @@ document.addEventListener("DOMContentLoaded", function () {
         let locationPrice = locationPrices[location] || 0;
 
         // Calcolo degli accessori
-        let accessoriesCost = 0;
-        selectedAccessories.forEach(accessory => {
-            if (accessoryPrices[accessory]) {
-                accessoriesCost += (accessory === "battiscopa" ? accessoryPrices[accessory] * surface : accessoryPrices[accessory]);
-            }
-        });
+        let accessoriesCost = selectedAccessories.reduce((total, accessory) => {
+            return total + (accessoryPrices[accessory] || 0);
+        }, 0);
 
-        // Calcolo del costo totale
         let totalCost = (woodPrice + installationPrice + subfloorPrice + roomShapePrice) * surface + locationPrice + accessoriesCost;
 
         // Mostra il risultato
@@ -338,41 +322,64 @@ document.addEventListener("DOMContentLoaded", function () {
             <p><strong>Località:</strong> +€${locationPrice}</p>
         `;
         totalPrice.innerHTML = `<h3>Totale stimato: €${totalCost.toFixed(2)}</h3>`;
+    });
 
-        console.log("✅ Preventivo calcolato:", totalCost); // Debug per verificare il calcolo
+    // Funzione per scaricare il PDF
+    downloadPdfBtn.addEventListener("click", function () {
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+
+        let woodType = woodTypeSelect.value;
+        let customPrice = customPriceInput.value;
+        let surface = surfaceInput.value;
+        let installationType = installationTypeSelect.value;
+        let subfloorType = subfloorSelect.value;
+        let roomShape = roomShapeSelect.value;
+        let location = locationSelect.value;
+        let notes = notesInput.value;
+        let accessories = Array.from(accessoriesSelect.selectedOptions).map(opt => opt.text).join(", ");
+
+        doc.text("Preventivo Parquet", 10, 10);
+        doc.text(`Tipo di legno: ${woodType}`, 10, 20);
+        if (woodType === "custom") doc.text(`Prezzo personalizzato: €${customPrice}/m²`, 10, 30);
+        doc.text(`Superficie: ${surface} m²`, 10, 40);
+        doc.text(`Tipo di posa: ${installationType}`, 10, 50);
+        doc.text(`Sottofondo: ${subfloorType}`, 10, 60);
+        doc.text(`Forma stanza: ${roomShape}`, 10, 70);
+        doc.text(`Accessori: ${accessories}`, 10, 80);
+        doc.text(`Località: ${location}`, 10, 90);
+        doc.text(`Note: ${notes}`, 10, 100);
+
+        doc.save("preventivo.pdf");
+    });
+
+    // Funzione di invio email
+    sendQuoteBtn.addEventListener("click", function () {
+        let emailAddress = "luxurywoodpavimenti@gmail.com";
+        let subject = "Preventivo parquet";
+        let body = "Ecco il preventivo generato, in allegato il PDF.";
+
+        window.location.href = `mailto:${emailAddress}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    });
+
+    // Funzione di invio WhatsApp
+    whatsappQuoteBtn.addEventListener("click", function () {
+        let phoneNumber = "3923850100";
+        let message = "Ciao! Ti invio il preventivo per il parquet.";
+
+        let url = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
+        window.open(url, "_blank");
+    });
+
+    // Funzione di reset
+    resetBtn.addEventListener("click", function () {
+        document.getElementById("quoteForm").reset();
+        resultContainer.style.display = "none";
     });
 });
 
-document.getElementById("downloadPdfBtn").addEventListener("click", downloadPDF);
 
 
-//generazione PDF
-function downloadPDF() {
-    const { jsPDF } = window.jspdf;
-    let doc = new jsPDF();
-
-    doc.setFont("helvetica", "bold");
-    doc.setFontSize(16);
-    doc.text("Preventivo Stimato", 20, 20);
-    
-    doc.setFontSize(12);
-    doc.setFont("helvetica", "normal");
-    let breakdown = document.getElementById("priceBreakdown").innerText;
-    let total = document.getElementById("totalPrice").innerText;
-
-    doc.text(breakdown, 20, 40);
-    doc.text(total, 20, 80);
-
-    doc.save("preventivo.pdf");
-}
-
-
-//refresh preventivo
-function resetForm() {
-    document.getElementById("quoteForm").reset();
-    document.getElementById("resultContainer").style.display = "none";
-}
-document.getElementById("resetBtn").addEventListener("click", resetForm);
 
 
 
