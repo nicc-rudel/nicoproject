@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="img/logo2.png" type="image/jpeg">
+    <link rel="icon" href="img/logo.definitivo.png" type="image/jpeg">
     <title>Luxury Wood</title>
     <link rel="stylesheet" href="style.css">
     <meta name="description" content="Luxury Wood è un'azienda specializzata nella posa di pavimenti in legno.">
@@ -16,16 +16,12 @@
         <button id="acceptCookies">Accetta</button>
         <button id="declineCookies">Rifiuta</button>
     </div>
-    <div id="cookieConsent" class="cookie-consent">
-        <p>Hai accettato i cookie. Grazie!</p>
-        <button id="closeConsent">Chiudi</button>
-    </div>
     
     <!-- Header -->
     <header>
         <div class="container">
             <h1>
-                <img src="img/logo2.png" loading="lazy" alt="Logo Luxury Wood" class="logo" width="60" height="60">
+                <img src="img/logo.definitivo.png" loading="lazy" alt="Logo Luxury Wood" class="logo" width="60" height="60">
                 Luxury Wood
             </h1>
             <h1>Qualità e Tradizione nei pavimenti in legno</h1>
@@ -69,7 +65,7 @@
                                 <img src="img/restauro3.jpeg" alt="Restauro pavimenti antichi">
                                 <button class="open-modal" data-modal="modal3">🔍 Scopri di più</button>
                             </div>
-                            <div class="slide">
+                            <!--<div class="slide">
                                 <h3>lavorazione 4</h3>
                                 <img src="" alt="lavorazione 4">
                                 <button class="open-modal" data-modal="modal4">🔍 Scopri di più</button>
@@ -79,7 +75,7 @@
                                 <h3>lavorazione 5</h3>
                                 <img src="" alt="lavorazione 5">
                                 <button class="open-modal" data-modal="modal5">🔍 Scopri di più</button>
-                            </div>
+                            </div>-->
 
                         </div>
 
@@ -335,9 +331,11 @@
                 <h2>Il tuo preventivo stimato</h2>
                 <div class="price-breakdown" id="priceBreakdown"></div>
                 <div class="total-price" id="totalPrice"></div>
-                <p>Questa è una stima approssimativa. I costi dei vari materiali e delle lavorazioni subiscono variazioni continue. Per un preventivo accurato e personalizzato, contattaci. </p>
-                <button id="downloadPdfBtn">Scarica PDF</button>
+                <p>Questa è una stima approssimativa. I prezzi dei materiali subiscono continue variazioni. Per un preventivo preciso e personalizzato, contattaci per un sopralluogo. </p>
                 <button id="resetBtn">Nuovo Preventivo</button>
+                <button id="downloadBtn">Scarica PDF</button>
+                <button id="sendQuoteBtn">Invia via Email</button>
+                <button id="whatsappQuoteBtn">Invia via WhatsApp</button>
             </div>
             
         </div>
@@ -384,15 +382,7 @@
     </a>
    
 
-
-
-
-
-
-
-
-
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
 
 <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
@@ -401,3 +391,14 @@
 <script src="script.js"></script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
