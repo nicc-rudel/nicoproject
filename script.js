@@ -47,10 +47,106 @@ document.addEventListener("DOMContentLoaded", function () {
         consent.style.display = "none";
     });
 });
+//menù a tendina iniziale
+document.addEventListener("DOMContentLoaded", function () {
+    let dropdownBtn = document.querySelector(".dropbtn");
+    let dropdownMenu = document.querySelector(".dropdown-content");
+
+    dropdownBtn.addEventListener("click", function () {
+        dropdownMenu.style.display = dropdownMenu.style.display === "block" ? "none" : "block";
+    });
+
+    // Chiudi il menù se si clicca fuori
+    document.addEventListener("click", function (event) {
+        if (!dropdownBtn.contains(event.target) && !dropdownMenu.contains(event.target)) {
+            dropdownMenu.style.display = "none";
+        }
+    });
+});
+
+
+// caroselo immagini
+let images = document.querySelectorAll(".custom-image"); 
+let modal = document.getElementById("modal");
+let modalImg = document.getElementById("modalImg");
+let currentIndex = 0;
+let interval; // Per il movimento automatico del carosello
+
+// 🖼 Apri il modal e ferma il carosello
+document.querySelectorAll(".open-modal").forEach(button => {
+    button.addEventListener("click", function() {
+        let targetModal = document.getElementById(this.dataset.modal);
+        targetModal.style.display = "block";
+        stopSlider();
+    });
+});
+
+// ❌ Chiudi il modal e riavvia il carosello
+document.querySelectorAll(".close").forEach(closeBtn => {
+    closeBtn.addEventListener("click", function() {
+        this.closest(".modal").style.display = "none";
+        startSlider();
+    });
+});
+
+// 🏹 Navigazione tra le immagini
+function prevImage() {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    modalImg.src = images[currentIndex].src;
+}
+
+function nextImage() {
+    currentIndex = (currentIndex + 1) % images.length;
+    modalImg.src = images[currentIndex].src;
+}
+
+// 🔁 Avvia il carosello automaticamente
+function startSlider() {
+    interval = setInterval(() => {
+        nextImage();
+    }, 3000);
+}
+
+// ⏸ Ferma il carosello quando il modal è aperto
+function stopSlider() {
+    clearInterval(interval);
+}
+
+// 🖥️ Chiusura del modal con il tasto ESC
+document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+        document.querySelectorAll(".modal").forEach(modal => {
+            modal.style.display = "none";
+        });
+        startSlider();
+    }
+});
+
+// ✨ Avvia il carosello all'apertura della pagina
+startSlider();
 
 
 
 
+
+//funzione menu a tendina sezione immagini
+document.addEventListener("DOMContentLoaded", function () {
+    let dropdown = document.querySelector(".dropdown-content");
+    let button = document.querySelector(".dropbtn");
+
+    button.addEventListener("click", function () {
+        dropdown.classList.toggle("show");
+    });
+
+    // Chiude il menu se l'utente clicca fuori
+    window.addEventListener("click", function (event) {
+        if (!button.contains(event.target) && !dropdown.contains(event.target)) {
+            dropdown.classList.remove("show");
+        }
+    });
+});
+
+//filtro immagini
 document.getElementById("category").addEventListener("change", applyFilters);
 
 function applyFilters() {
@@ -69,108 +165,6 @@ function applyFilters() {
 }
 
 
-document.addEventListener("DOMContentLoaded", function () {
-    let dropdown = document.querySelector(".dropdown-content");
-    let button = document.querySelector(".dropbtn");
-
-    button.addEventListener("click", function () {
-        dropdown.classList.toggle("show");
-    });
-
-    // Chiude il menu se l'utente clicca fuori
-    window.addEventListener("click", function (event) {
-        if (!button.contains(event.target) && !dropdown.contains(event.target)) {
-            dropdown.classList.remove("show");
-        }
-    });
-});
-
-
-
-
-// Fix: Usa la classe corretta per selezionare le immagini
-document.querySelectorAll(".custom-image").forEach(img => {
-    img.addEventListener("click", function() {
-        let modal = document.getElementById("modal");
-        let modalImg = document.getElementById("modalImg");
-
-        if (modal && modalImg) {
-            modal.style.display = "block";
-            modalImg.src = this.src;
-        } else {
-            console.error("Errore: Il modal o l'immagine nel modal non esistono!");
-        }
-    });
-});
-
-// Fix: Chiude il pop-up anche cliccando sullo sfondo nero
-document.getElementById("modal").addEventListener("click", function(event) {
-    if (event.target === this) {
-        closeModal();
-    }
-});
-
-function closeModal() {
-    document.getElementById("modal").style.display = "none";
-}
-
-//freccie per scorrere le immagini
-let images = document.querySelectorAll(".custom-image"); // Seleziona le immagini
-let currentIndex = 0; // Indice della foto attuale
-
-document.querySelectorAll(".custom-image").forEach((img, index) => {
-    img.addEventListener("click", function() {
-        let modal = document.getElementById("modal");
-        let modalImg = document.getElementById("modalImg");
-
-        modal.style.display = "block";
-        modalImg.src = this.src;
-        currentIndex = index; // Salva l'indice della foto cliccata
-    });
-});
-
-function prevImage() {
-    currentIndex = (currentIndex - 1 + images.length) % images.length;
-    document.getElementById("modalImg").src = images[currentIndex].src;
-}
-
-function nextImage() {
-    currentIndex = (currentIndex + 1) % images.length;
-    document.getElementById("modalImg").src = images[currentIndex].src;
-}
-
-// Chiudi il pop-up cliccando sullo sfondo
-document.getElementById("modal").addEventListener("click", function(event) {
-    if (event.target === this) {
-        closeModal();
-    }
-});
-
-function closeModal() {
-    document.getElementById("modal").style.display = "none";
-}
-
-
-//menù a tendina
-document.addEventListener("DOMContentLoaded", function () {
-    let dropdownBtn = document.querySelector(".dropbtn");
-    let dropdownMenu = document.querySelector(".dropdown-content");
-
-    dropdownBtn.addEventListener("click", function () {
-        dropdownMenu.style.display = dropdownMenu.style.display === "block" ? "none" : "block";
-    });
-
-    // Chiudi il menù se si clicca fuori
-    document.addEventListener("click", function (event) {
-        if (!dropdownBtn.contains(event.target) && !dropdownMenu.contains(event.target)) {
-            dropdownMenu.style.display = "none";
-        }
-    });
-});
-
-
-
-
 
 // Funzione per inviare l'email
 document.getElementById("sendEmailBtn").addEventListener("click", function () {
@@ -186,7 +180,7 @@ document.getElementById("sendEmailBtn").addEventListener("click", function () {
     let subject = encodeURIComponent("Richiesta Preventivo - Luxury Wood");
     let body = encodeURIComponent(`Nome: ${name}\nEmail: ${email}\n\nMessaggio:\n${message}`);
 
-    window.location.href = `mailto:luxurywoodpavimenti@gmail.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:luxurywoodpavimenti@email.com?subject=${subject}&body=${body}`;
 });
 
 
