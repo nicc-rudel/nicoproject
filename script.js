@@ -196,7 +196,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Mostra il pop-up dopo 1 secondo
     setTimeout(function () {
         popup.style.display = "block";
-    }, 1000);
+    }, 3000);
 
     // Nasconde il pop-up automaticamente dopo 10 secondi se non cliccato
     setTimeout(function () {
