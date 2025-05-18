@@ -69,6 +69,7 @@ header h1 {
     text-align: center;
     border-radius: 8px;
     display: none; /* Inizialmente nascosto */
+    z-index: 10000;
 }
 
 .cookie-banner button {
@@ -205,7 +206,7 @@ nav {
 .modal {
     display: none;
     position: fixed;
-    z-index: 1000;
+    z-index: 900;
     left: 0;
     top: 0;
     width: 100%;
@@ -226,6 +227,13 @@ nav {
     display: flex;
     transition: transform 0.5s ease-in-out;
     scroll-behavior: smooth;
+}
+
+@media (max-width: 768px) {
+    .custom-image {
+        width: 100%;
+        height: auto;
+    }
 }
 
 
