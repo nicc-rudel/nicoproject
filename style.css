@@ -93,60 +93,75 @@ header h1 {
 
 /*menù a tendina*/
 /* Stile generale */
+/* 🎨 Stile del menu */
 nav {
     display: flex;
-    justify-content: space-between;
+    justify-content: center; /* Centra tutto il contenuto */
     align-items: center;
+    background-color: #333;
+    padding: 10px;
 }
 
-/* Stile per il dropdown */
+/* 📂 Dropdown */
 .dropdown {
     position: relative;
-    display: flex;
-    justify-content: center;
+    z-index: 1000; /* Assicura che il menu sia sopra altri elementi */
 }
 
+/* 🔘 Bottone del menu */
 .dropbtn {
-    background-color: #333;
+    background-color: #444;
     color: white;
-    padding: 10px 15px;
+    padding: 12px 18px;
     font-size: 16px;
     border: none;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
 }
 
+.dropbtn:hover {
+    background-color: #555;
+}
+
+/* 📋 Contenuto del dropdown */
 .dropdown-content {
     display: none;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    top:calc(100% + 10px);
+    top: 120%; /* Distanza più chiara dal bottone */
     background-color: #f4f4f4;
-    min-width: 160px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    z-index: 10;
-    border-radius: 5px;
+    min-width: 180px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    border-radius: 6px;
+    overflow: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    padding: 10px; /* 👈 Evita lo "scatto" */
 }
 
 .dropdown-content a {
     color: black;
-    padding: 10px;
+    padding: 12px 15px;
     text-decoration: none;
     display: block;
+    text-align: center;
 }
 
 .dropdown-content a:hover {
-    background-color: #B8860B; /* Effetto dorato */
-    color: white
-    
-
+    background-color: #B8860B;
+    color: white;
 }
 
-/* Mostra il menù al passaggio del mouse */
+/* ✨ Effetto di apertura */
+/* 🔽 Mostra il menu al passaggio del mouse */
 .dropdown:hover .dropdown-content {
     display: block;
+    opacity: 1;
+    transform: translateX(-50%) translateY(10px);
 }
+
 
 
 
@@ -203,36 +218,54 @@ nav {
 }
 
 /* Modali */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 900;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    text-align: center;
-}
-
 .modal-content {
     background-color: white;
     padding: 20px;
-    width: 60%;
+    width: 80%;
+    max-width: 600px;
     margin: 10% auto;
     border-radius: 8px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
+    text-align: left;
 }
 
-.slider {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-    scroll-behavior: smooth;
+/* Migliora il titolo */
+.modal-content h3 {
+    font-size: 22px;
+    color: #333;
+    text-align: center;
 }
 
+/* Rende il testo più leggibile */
+.modal-content p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #555;
+}
+
+/* Pulsante di chiusura più visibile */
+.close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 30px;
+    color: #333;
+    cursor: pointer;
+}
+
+/* Ottimizzazione per mobile */
 @media (max-width: 768px) {
-    .custom-image {
-        width: 100%;
-        height: auto;
+    .modal-content {
+        width: 90%;
+        padding: 15px;
+    }
+
+    .modal-content h3 {
+        font-size: 20px;
+    }
+
+    .modal-content p {
+        font-size: 14px;
     }
 }
 
@@ -242,7 +275,7 @@ nav {
     color: #000;
     text-align: center;
     padding: 50px 0;
-    background-color: rgba(173, 163, 163, 0.323);
+    background-color:#F0E8DB;
 
 }
 
@@ -254,10 +287,16 @@ nav {
     text-align: left;
 }
 
-.services, .contact {
+.contact {
     background-color: #f4af0094;
 }
 
+.about , .preventivo{
+    background-color: #F0E8DB;
+}
+.services, .photo {
+    background-color: #D0BEA6;
+}
 
 
 
@@ -386,7 +425,7 @@ nav {
 
 /*preventivo*/
 .preventivo {
-    background-color: #f4f4f4;
+    background-color: #F0E8DB;
     padding: 30px;
     border-radius: 10px;
     text-align: center;
