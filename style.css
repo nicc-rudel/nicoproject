@@ -49,7 +49,8 @@ header nav ul li a:hover {
     border-radius: 10px;
     transition: background-color 0.2s ease, box-shadow 0.2s ease;
 }
-header h1 {
+header h1,
+header h2{
     text-align: center;
     font-size: 2.5em;
     margin: 0;
@@ -314,10 +315,11 @@ nav {
     padding: 5px;
     background-color: #f4f4f4;
     border: 2px solid #333;
-    border-radius: 20px;
+    border-radius: 10px;
     max-width: 200px;
     margin: 10px auto;
     justify-content: center;
+    align-items: center;
 }
 /* 🖼️ Galleria di immagini */
 .photo-gallery {
@@ -426,18 +428,13 @@ nav {
 /*preventivo*/
 .preventivo {
     background-color: #F0E8DB;
-    padding: 30px;
     border-radius: 10px;
     text-align: center;
     box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
 }
 
 .preventivo h2 {
-    color: #333;
     text-align: left;
-    margin-bottom: 15px;
-    padding-left: 20px;
-    border-bottom: 3px solid #333;
 }
 .input-group {
     display: flex;
@@ -453,7 +450,6 @@ input, textarea {
     width: 100%;
     align-items: center;
     box-sizing: border-box;
-    margin-left:20px;
     transition: border-color 0.3s ease-in-out;
 }
 input:focus, textarea:focus {
@@ -496,10 +492,18 @@ button:hover {
     margin-bottom: 20px;
 }
 
-label {
+#filterForm label {
     display: block;
-    margin-bottom: 8px;
     font-weight: bold;
+}
+
+#contactForm input, 
+#contactForm textarea {
+    width: 75%;
+}
+
+#contactForm label {
+    width: 25%;
 }
 
 select, input, textarea {
@@ -599,6 +603,11 @@ button:hover {
 
 
 /* 📞 Sezione Contatti */
+
+#contactForm {
+
+}
+
 .contact h2 {
     border-bottom: 2px solid #333;;
 }
@@ -715,10 +724,7 @@ footer {
     display: flex;
     justify-content: center;
     gap: 8px;
-    position: absolute;
-    bottom: 15px;
-    left: 50%;
-    transform: translateX(-50%);
+    margin-top: 10px;
 }
 
 .dot {

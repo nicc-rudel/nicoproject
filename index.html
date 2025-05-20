@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,7 +13,8 @@
 
 <body>
     <div id="cookieBanner" class="cookie-banner">
-        <p>Questo sito utilizza cookie per migliorare l'esperienza. Continuando la navigazione accetti l'uso dei cookie.</p>
+        <p>Questo sito utilizza cookie per migliorare l'esperienza. Continuando la navigazione accetti l'uso dei cookie.
+        </p>
         <button id="acceptCookies">Accetta</button>
         <button id="declineCookies">Rifiuta</button>
     </div>
@@ -21,15 +23,16 @@
         <button id="closeConsent">Chiudi</button>
     </div>
 
-    
+
     <!-- Header -->
     <header>
         <div class="container">
             <h1>
-                <img src="img/logo.definitivo.png" loading="lazy" alt="Logo Luxury Wood" class="logo" width="60" height="60">
+                <img src="img/logo.definitivo.png" loading="lazy" alt="Logo Luxury Wood" class="logo" width="60"
+                    height="60">
                 Luxury Wood
             </h1>
-            <h1>Qualità e Tradizione nei pavimenti in legno</h1>
+            <h2>Qualità e Tradizione nei pavimenti in legno</h2>
             <nav>
                 <div class="dropdown">
                     <button class="dropbtn">Menu ▼</button>
@@ -44,87 +47,110 @@
             </nav>
         </div>
     </header>
-   
 
-    
-    
+
+
+
     <!-- Servizi -->
     <section id="servizi" class="services">
         <div class="container">
             <h2>Alcuni dei nostri servizi</h2>
             <div class="gallery">
-                    <div class="slider-container">
-                        <div class="slider">
-                            <div class="slide">
-                                <h3>Realizzazione pavimento a spina di pesce</h3>
-                                <img src="img/interno.jpeg" alt="Realizzazione Pavimento a Spina di Pesce">
-                                <button class="open-modal" data-modal="modal1">🔍 Scopri di più</button>
-                            </div>
-                            <div class="slide">
-                                <h3>Realizzazioni pareti</h3>
-                                <img src="img/bagno.jpeg" alt="Realizzazione Pareti">                               
-                                <button class="open-modal" data-modal="modal2">🔍 Scopri di più</button>
-                            </div>
-                            <div class="slide">
-                                <h3>Restauro pavimenti antichi</h3>
-                                <img src="img/restauro3.jpeg" alt="Restauro pavimenti antichi">
-                                <button class="open-modal" data-modal="modal3">🔍 Scopri di più</button>
-                            </div>
-                        </div>
-
-                        <!-- Frecce di navigazione -->
-                        <button id="prevSlide" class="nav-btn">
-                            <svg width="24" height="24" viewBox="0 0 24 24">
-                                <path d="M15 5l-7 7 7 7" stroke="white" stroke-width="2" fill="none"/>
-                            </svg>
-                        </button>
-                        <button id="nextSlide" class="nav-btn">
-                            <svg width="24" height="24" viewBox="0 0 24 24">
-                                <path d="M9 5l7 7-7 7" stroke="white" stroke-width="2" fill="none"/>
-                            </svg>
-                        </button>
-
-                    </div>
-
-                    <!-- Modali -->
-                    <div id="modal1" class="modal">
-                        <div class="modal-content">
-                            <span class="close">&times;</span>
+                <div class="slider-container">
+                    <div class="slider">
+                        <div class="slide">
                             <h3>Realizzazione pavimento a spina di pesce</h3>
-                            <p>Il pavimento a spina di pesce rappresenta una soluzione tecnica e decorativa di alto livello, ideale per ambienti residenziali e commerciali che richiedono un’estetica distintiva e una posa strutturata. La disposizione dei listoni segue uno schema angolare (90° nella spina italiana, 45° nella spina ungherese), creando un motivo geometrico regolare che conferisce profondità visiva e ordine allo spazio.
-                                Questa configurazione, oltre al valore estetico, garantisce una distribuzione uniforme delle sollecitazioni, aumentando la stabilità del rivestimento nel tempo. Disponibile in diverse essenze, finiture e formati, il parquet a spina di pesce è compatibile con sistemi di riscaldamento a pavimento e può essere personalizzato in base alle esigenze progettuali.
-                                Una scelta tecnica che coniuga precisione, durabilità e design contemporaneo.</p>
+                            <img src="img/interno.jpeg" alt="Realizzazione Pavimento a Spina di Pesce">
+                            <button class="open-modal" data-modal="modal1">🔍 Scopri di più</button>
                         </div>
-                    </div>
-
-                    <div id="modal2" class="modal">
-                        <div class="modal-content">
-                            <span class="close">&times;</span>
-                            <h3>Realizzazione Pareti</h3>
-                            <p>Realizziamo pareti in legno su misura, pensate per valorizzare ogni ambiente con eleganza, calore e personalità. Utilizziamo solo materiali selezionati, scegliendo l’essenza più adatta in base allo stile e alle caratteristiche dello spazio. La lavorazione prevede finiture artigianali, come la spazzolatura o l’oliatura, che esaltano le venature naturali del legno e ne migliorano la resa estetica e tattile. La posa viene eseguita con la massima precisione, assicurando uniformità, stabilità e un risultato finale armonico. Una parete in legno non è solo un elemento decorativo, ma un vero e proprio intervento di design che dona calore, profondità e carattere agli interni, contribuendo anche al comfort acustico dell’ambiente.</p>
+                        <div class="slide">
+                            <h3>Realizzazioni pareti</h3>
+                            <img src="img/bagno.jpeg" alt="Realizzazione Pareti">
+                            <button class="open-modal" data-modal="modal2">🔍 Scopri di più</button>
                         </div>
-                    </div>
-
-                    <div id="modal3" class="modal">
-                        <div class="modal-content">
-                            <span class="close">&times;</span>
+                        <div class="slide">
                             <h3>Restauro pavimenti antichi</h3>
-                            <p>Il restauro di pavimenti in legno antichi richiede competenze specialistiche e un approccio conservativo orientato alla valorizzazione del materiale originale. Interveniamo con tecniche avanzate di levigatura, stuccatura e trattamento superficiale, preservando la patina storica e le caratteristiche strutturali del parquet.
-                                Ogni intervento viene preceduto da un’attenta analisi dello stato del pavimento: identifichiamo eventuali danni, instabilità o alterazioni, per intervenire in modo mirato con soluzioni compatibili ai materiali d’epoca. Utilizziamo oli, cere o vernici naturali selezionate per garantire protezione duratura e resa estetica coerente con l’epoca del manufatto.
-                                Il nostro obiettivo è restituire integrità e valore al pavimento, rispettando il suo carattere storico e garantendo al tempo stesso funzionalità e resistenza nel tempo.</p>
+                            <img src="img/restauro3.jpeg" alt="Restauro pavimenti antichi">
+                            <button class="open-modal" data-modal="modal3">🔍 Scopri di più</button>
                         </div>
-                    </div>   
-            <div class="dots-container">
-                <span class="dot" data-slide="1"></span>
-                <span class="dot" data-slide="2"></span>
-                <span class="dot" data-slide="3"></span>
-            </div>
-            <div class="progress-bar-container">
-                <div class="progress-bar"></div>
-            </div>
+                    </div>
+
+                    <!-- Frecce di navigazione -->
+                    <button id="prevSlide" class="nav-btn">
+                        <svg width="24" height="24" viewBox="0 0 24 24">
+                            <path d="M15 5l-7 7 7 7" stroke="white" stroke-width="2" fill="none" />
+                        </svg>
+                    </button>
+                    <button id="nextSlide" class="nav-btn">
+                        <svg width="24" height="24" viewBox="0 0 24 24">
+                            <path d="M9 5l7 7-7 7" stroke="white" stroke-width="2" fill="none" />
+                        </svg>
+                    </button>
+
+                </div>
+
+                <!-- Modali -->
+                <div id="modal1" class="modal">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <h3>Realizzazione pavimento a spina di pesce</h3>
+                        <p>Il pavimento a spina di pesce rappresenta una soluzione tecnica e decorativa di alto livello,
+                            ideale per ambienti residenziali e commerciali che richiedono un’estetica distintiva e una
+                            posa strutturata. La disposizione dei listoni segue uno schema angolare (90° nella spina
+                            italiana, 45° nella spina ungherese), creando un motivo geometrico regolare che conferisce
+                            profondità visiva e ordine allo spazio.
+                            Questa configurazione, oltre al valore estetico, garantisce una distribuzione uniforme delle
+                            sollecitazioni, aumentando la stabilità del rivestimento nel tempo. Disponibile in diverse
+                            essenze, finiture e formati, il parquet a spina di pesce è compatibile con sistemi di
+                            riscaldamento a pavimento e può essere personalizzato in base alle esigenze progettuali.
+                            Una scelta tecnica che coniuga precisione, durabilità e design contemporaneo.</p>
+                    </div>
+                </div>
+
+                <div id="modal2" class="modal">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <h3>Realizzazione Pareti</h3>
+                        <p>Realizziamo pareti in legno su misura, pensate per valorizzare ogni ambiente con eleganza,
+                            calore e personalità. Utilizziamo solo materiali selezionati, scegliendo l’essenza più
+                            adatta in base allo stile e alle caratteristiche dello spazio. La lavorazione prevede
+                            finiture artigianali, come la spazzolatura o l’oliatura, che esaltano le venature naturali
+                            del legno e ne migliorano la resa estetica e tattile. La posa viene eseguita con la massima
+                            precisione, assicurando uniformità, stabilità e un risultato finale armonico. Una parete in
+                            legno non è solo un elemento decorativo, ma un vero e proprio intervento di design che dona
+                            calore, profondità e carattere agli interni, contribuendo anche al comfort acustico
+                            dell’ambiente.</p>
+                    </div>
+                </div>
+
+                <div id="modal3" class="modal">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <h3>Restauro pavimenti antichi</h3>
+                        <p>Il restauro di pavimenti in legno antichi richiede competenze specialistiche e un approccio
+                            conservativo orientato alla valorizzazione del materiale originale. Interveniamo con
+                            tecniche avanzate di levigatura, stuccatura e trattamento superficiale, preservando la
+                            patina storica e le caratteristiche strutturali del parquet.
+                            Ogni intervento viene preceduto da un’attenta analisi dello stato del pavimento:
+                            identifichiamo eventuali danni, instabilità o alterazioni, per intervenire in modo mirato
+                            con soluzioni compatibili ai materiali d’epoca. Utilizziamo oli, cere o vernici naturali
+                            selezionate per garantire protezione duratura e resa estetica coerente con l’epoca del
+                            manufatto.
+                            Il nostro obiettivo è restituire integrità e valore al pavimento, rispettando il suo
+                            carattere storico e garantendo al tempo stesso funzionalità e resistenza nel tempo.</p>
+                    </div>
+                </div>
+                <div class="dots-container">
+                    <span class="dot" data-slide="1"></span>
+                    <span class="dot" data-slide="2"></span>
+                    <span class="dot" data-slide="3"></span>
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar"></div>
+                </div>
 
 
-        </div>
+            </div>
 
     </section>
 
@@ -135,208 +161,222 @@
             <h2>Chi Siamo</h2>
             <p>
                 Da oltre 30 anni, trasformiamo il legno in arte per la tua casa.
-                Siamo specialisti nella realizzazione e nel restauro di pavimenti in legno, offrendo soluzioni su misura per ogni ambiente.
+                Siamo specialisti nella realizzazione e nel restauro di pavimenti in legno, offrendo soluzioni su misura
+                per ogni ambiente.
             </p>
             <p>
-                La nostra passione per il legno ci ha portato a diventare un punto di riferimento nel settore, grazie alla nostra esperienza e alla qualità dei nostri prodotti.
-                Tradizione artigianale, materiali di alta qualità e attenzione ai dettagli sono il nostro marchio di fabbrica.
-                Che tu desideri un parquet elegante, un pavimento rustico o una finitura moderna, noi di Luxury Wood diamo forma ai tuoi sogni.</p>
-                Per qualsiasi informazione o richiesta di <a href="#preventivo">preventivo</a>, non esitate a <a href="#contatti" class="contatti">contattarci</a>.
+                La nostra passione per il legno ci ha portato a diventare un punto di riferimento nel settore, grazie
+                alla nostra esperienza e alla qualità dei nostri prodotti.
+                Tradizione artigianale, materiali di alta qualità e attenzione ai dettagli sono il nostro marchio di
+                fabbrica.
+                Che tu desideri un parquet elegante, un pavimento rustico o una finitura moderna, noi di Luxury Wood
+                diamo forma ai tuoi sogni.</p>
+            Per qualsiasi informazione o richiesta di <a href="#preventivo">preventivo</a>, non esitate a <a
+                href="#contatti" class="contatti">contattarci</a>.
             </p>
         </div>
     </section>
-   
-   
+
+
     <!-- Sezione Foto Lavori -->
-<section id="foto-lavori" class="photo">
-    <div class="container">
-        <h2>Alcune foto dei nostri lavori</h2>
+    <section id="foto-lavori" class="photo">
+        <div class="container">
+            <h2>Alcune foto dei nostri lavori</h2>
 
-        <!-- Filtro categorie -->
-        <form id="filterForm" class="filter-container">
-            <label for="category">Categoria:</label>
-            <select id="category" class="custom-select">
-                <option value="nessuna">Nessuna</option>
-                <option value="tutte">Tutte</option>
-                <option value="interni">Interni</option>
-                <option value="esterni">Esterni</option>
-                <option value="restauri">Restauri</option>
-            </select>
-        </form>
-
-        <!-- Galleria di immagini -->
-        <div class="photo-gallery">
-            <img src="img/interno.jpeg" alt="interni"data-category="interni tutte" class="custom-image">
-            <img src="img/interno2.jpeg" alt="interni" data-category="interni tutte" class="custom-image">
-            <img src="img/bagno.jpeg" alt="interni" data-category="interni tutte" class="custom-image">
-            <img src="img/restauro2.jpeg" alt="restauri" data-category="restauri tutte" class="custom-image">
-            <img src="img/restauro.jpeg" alt="restauri" data-category="restauri tutte" class="custom-image">
-            <img src="img/WhatsApp Image 2025-04-27 at 01.50.16 (1).jpeg" alt="interni" data-category="interni tutte" class="custom-image">
-        </div>
-
-        <!-- Modal per visualizzazione immagini -->
-        <div id="modal" class="modal">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <span class="prev" onclick="prevImage()">&#10094;</span>
-            <img id="modalImg" class="modal-content">
-            <span class="next" onclick="nextImage()">&#10095;</span>
-        </div>
-    </div>
-</section>
-
-
-
-
-<!-- Sezione Preventivo -->
-<section id="preventivo" class="preventivo">
-    <h2>Richiedi il tuo preventivo</h2>
-    <p>Luxury Wood offre un servizio di consulenza personalizzata per aiutarti a scegliere il pavimento in legno perfetto per la tua casa.</p>
-    <p>Per richiedere un preventivo, compila il modulo di contatto qui sotto:</p>
-    
-    <form id="contactForm">
-        <div class="input-group">
-            <label for="name">Nome:</label>
-            <input type="text" id="name" name="name" placeholder="Inserisci il tuo nome" required aria-required="true">
-        </div>
-
-        <div class="input-group">
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" placeholder="Inserisci la tua email" required aria-required="true">
-        </div>
-
-        <div class="input-group">
-            <label for="message">Messaggio:</label>
-            <textarea id="message" name="message" rows="4" placeholder="Scrivi il tuo messaggio" required aria-required="true"></textarea>
-        </div>
-
-        <button type="button" id="sendEmailBtn">📩 Invia Richiesta</button>
-        <p id="statusMessage"></p>
-    </form>
-    <p>oppure prova a simulare il tuo preventivo</p>
-
-    <button id="showQuoteBtn">📝 Simula il tuo preventivo</button>
-
-
-    <!--Simulatore di Preventivo -->
-        <div class="simulator-container">
-            <!--<h1>Simulatore di Preventivo</h1>-->
-            
-            <form id="quoteForm">
-                <div class="form-columns">
-                    <div class="form-column">
-                        <div class="form-group">
-                            <label for="woodType">Tipo di Legno</label>
-                            <select id="woodType" required>
-                                <option value="">Seleziona...</option>
-                                <option value="rovere">Rovere (€45/m²)</option>
-                                <option value="noce">Noce (€60/m²)</option>
-                                <option value="teak">Teak (€75/m²)</option>
-                                <option value="doussie">Doussié (€85/m²)</option>
-                                <option value="pino">Pino (€35/m²)</option>
-                                <option value="custom">Altro (prezzo personalizzato)</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group" id="customPriceGroup" style="display: none;">
-                            <label for="customPrice">Prezzo personalizzato (al m²)</label>
-                            <input type="number" id="customPrice" min="10" step="0.5">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="surface">Superficie da coprire (m²)</label>
-                            <input type="number" id="surface" min="1" step="0.5" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="installationType">Tipo di posa</label>
-                            <select id="installationType" required>
-                                <option value="flottante">Posa flottante (€15/m²)</option>
-                                <option value="incollata">Posa incollata (€25/m²)</option>
-                                <option value="chiodata">Posa chiodata (€30/m²)</option>
-                            </select>
-                        </div>
-                    </div>
-                    
-                    <div class="form-column">
-                        <div class="form-group">
-                            <label for="subfloor">Tipologia di sottofondo</label>
-                            <select id="subfloor" required>
-                                <option value="cemento">Massetto in cemento (preparazione standard)</option>
-                                <option value="gres">Gres porcellanato (richiede livellamento +€5/m²)</option>
-                                <option value="legno">Pavimento esistente in legno (preparazione standard)</option>
-                                <option value="irregolare">Sottofondo irregolare (richiede livellamento +€8/m²)</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="roomShape">Forma della stanza</label>
-                            <select id="roomShape">
-                                <option value="rettangolare">Rettangolare (taglio standard)</option>
-                                <option value="complessa">Forma complessa (taglio speciale +€3/m²)</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="accessories">Accessori</label>
-                            <select id="accessories" multiple>
-                                <option value="battiscopa">Battiscopa in legno (€10/m lineare)</option>
-                                <option value="soglia">Soglie di transizione (€25 cad.)</option>
-                                <option value="ventilazione">Griglie di ventilazione (€15 cad.)</option>
-                            </select>
-                            <small>Tieni premuto Ctrl per selezionare più opzioni</small>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="location">Località</label>
-                            <select id="location">
-                                <option value="urbano">Zona urbana (spese trasporto incluse)</option>
-                                <option value="extraurbano">Zona extraurbana (+€50)</option>
-                                <option value="montano">Zona montana (+€100)</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="notes">Note aggiuntive</label>
-                    <textarea id="notes" rows="3" placeholder="Descrivi eventuali particolarità dell'ambiente o richieste specifiche..."></textarea>
-                </div>
-                
-                <button type="button" id="calculateBtn">Calcola Preventivo</button>
+            <!-- Filtro categorie -->
+            <form id="filterForm" class="filter-container">
+                <label for="category">Categoria:</label>
+                <select id="category" class="custom-select">
+                    <option value="nessuna">Nessuna</option>
+                    <option value="tutte">Tutte</option>
+                    <option value="interni">Interni</option>
+                    <option value="esterni">Esterni</option>
+                    <option value="restauri">Restauri</option>
+                </select>
             </form>
-            
-            <div class="result-container" id="resultContainer">
-                <h2>Il tuo preventivo stimato</h2>
-                <div class="price-breakdown" id="priceBreakdown"></div>
-                <div class="total-price" id="totalPrice"></div>
-                <p>Questa è una stima approssimativa. I prezzi dei materiali subiscono continue variazioni. Per un preventivo preciso e personalizzato, contattaci per un sopralluogo. </p>
-                <button id="resetBtn">Nuovo Preventivo</button>
-                <button id="downloadBtn">Scarica PDF</button>
+
+            <!-- Galleria di immagini -->
+            <div class="photo-gallery">
+                <img src="img/interno.jpeg" alt="interni" data-category="interni tutte" class="custom-image">
+                <img src="img/interno2.jpeg" alt="interni" data-category="interni tutte" class="custom-image">
+                <img src="img/bagno.jpeg" alt="interni" data-category="interni tutte" class="custom-image">
+                <img src="img/restauro2.jpeg" alt="restauri" data-category="restauri tutte" class="custom-image">
+                <img src="img/restauro.jpeg" alt="restauri" data-category="restauri tutte" class="custom-image">
+                <img src="img/WhatsApp Image 2025-04-27 at 01.50.16 (1).jpeg" alt="interni"
+                    data-category="interni tutte" class="custom-image">
             </div>
-            
+
+            <!-- Modal per visualizzazione immagini -->
+            <div id="modal" class="modal">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <span class="prev" onclick="prevImage()">&#10094;</span>
+                <img id="modalImg" class="modal-content">
+                <span class="next" onclick="nextImage()">&#10095;</span>
+            </div>
         </div>
+    </section>
 
-</section>
 
- <!-- Contatti -->
-<section id="contatti" class="contact">
+
+
+    <!-- Sezione Preventivo -->
+    <section id="preventivo" class="preventivo">
+        <div class="container">
+            <h2>Richiedi il tuo preventivo</h2>
+            <p>Luxury Wood offre un servizio di consulenza personalizzata per aiutarti a scegliere il pavimento in legno
+                perfetto per la tua casa.</p>
+            <p>Per richiedere un preventivo, compila il modulo di contatto qui sotto:</p>
+
+            <form id="contactForm">
+                <div class="input-group">
+                    <label for="name">Nome:</label>
+                    <input type="text" id="name" name="name" placeholder="Inserisci il tuo nome" required
+                        aria-required="true">
+                </div>
+
+                <div class="input-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" placeholder="Inserisci la tua email" required
+                        aria-required="true">
+                </div>
+
+                <div class="input-group">
+                    <label for="message">Messaggio:</label>
+                    <textarea id="message" name="message" rows="4" placeholder="Scrivi il tuo messaggio" required
+                        aria-required="true"></textarea>
+                </div>
+
+                <button type="button" id="sendEmailBtn">📩 Invia Richiesta</button>
+                <p id="statusMessage"></p>
+            </form>
+            <p>oppure prova a simulare il tuo preventivo</p>
+
+            <button id="showQuoteBtn">📝 Simula il tuo preventivo</button>
+
+
+            <!--Simulatore di Preventivo -->
+            <div class="simulator-container">
+                <!--<h1>Simulatore di Preventivo</h1>-->
+
+                <form id="quoteForm">
+                    <div class="form-columns">
+                        <div class="form-column">
+                            <div class="form-group">
+                                <label for="woodType">Tipo di Legno</label>
+                                <select id="woodType" required>
+                                    <option value="">Seleziona...</option>
+                                    <option value="rovere">Rovere (€45/m²)</option>
+                                    <option value="noce">Noce (€60/m²)</option>
+                                    <option value="teak">Teak (€75/m²)</option>
+                                    <option value="doussie">Doussié (€85/m²)</option>
+                                    <option value="pino">Pino (€35/m²)</option>
+                                    <option value="custom">Altro (prezzo personalizzato)</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group" id="customPriceGroup" style="display: none;">
+                                <label for="customPrice">Prezzo personalizzato (al m²)</label>
+                                <input type="number" id="customPrice" min="10" step="0.5">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="surface">Superficie da coprire (m²)</label>
+                                <input type="number" id="surface" min="1" step="0.5" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="installationType">Tipo di posa</label>
+                                <select id="installationType" required>
+                                    <option value="flottante">Posa flottante (€15/m²)</option>
+                                    <option value="incollata">Posa incollata (€25/m²)</option>
+                                    <option value="chiodata">Posa chiodata (€30/m²)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-column">
+                            <div class="form-group">
+                                <label for="subfloor">Tipologia di sottofondo</label>
+                                <select id="subfloor" required>
+                                    <option value="cemento">Massetto in cemento (preparazione standard)</option>
+                                    <option value="gres">Gres porcellanato (richiede livellamento +€5/m²)</option>
+                                    <option value="legno">Pavimento esistente in legno (preparazione standard)</option>
+                                    <option value="irregolare">Sottofondo irregolare (richiede livellamento +€8/m²)
+                                    </option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="roomShape">Forma della stanza</label>
+                                <select id="roomShape">
+                                    <option value="rettangolare">Rettangolare (taglio standard)</option>
+                                    <option value="complessa">Forma complessa (taglio speciale +€3/m²)</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="accessories">Accessori</label>
+                                <select id="accessories" multiple>
+                                    <option value="battiscopa">Battiscopa in legno (€10/m lineare)</option>
+                                    <option value="soglia">Soglie di transizione (€25 cad.)</option>
+                                    <option value="ventilazione">Griglie di ventilazione (€15 cad.)</option>
+                                </select>
+                                <small>Tieni premuto Ctrl per selezionare più opzioni</small>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="location">Località</label>
+                                <select id="location">
+                                    <option value="urbano">Zona urbana (spese trasporto incluse)</option>
+                                    <option value="extraurbano">Zona extraurbana (+€50)</option>
+                                    <option value="montano">Zona montana (+€100)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="notes">Note aggiuntive</label>
+                        <textarea id="notes" rows="3"
+                            placeholder="Descrivi eventuali particolarità dell'ambiente o richieste specifiche..."></textarea>
+                    </div>
+
+                    <button type="button" id="calculateBtn">Calcola Preventivo</button>
+                </form>
+
+                <div class="result-container" id="resultContainer">
+                    <h2>Il tuo preventivo stimato</h2>
+                    <div class="price-breakdown" id="priceBreakdown"></div>
+                    <div class="total-price" id="totalPrice"></div>
+                    <p>Questa è una stima approssimativa. I prezzi dei materiali subiscono continue variazioni. Per un
+                        preventivo preciso e personalizzato, contattaci per un sopralluogo. </p>
+                    <button id="resetBtn">Nuovo Preventivo</button>
+                    <button id="downloadBtn">Scarica PDF</button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contatti -->
+    <section id="contatti" class="contact">
         <div class="container">
             <h2>Contatti</h2>
             <p>✉️Email: luxurywoodpavimenti@gmail.com </p>
             <p>📞Telefono:
-                <ul style="list-style-type: none;" class="contact-list">
-                    <li>Agostino: +39 324 898 5320</li>
-                    <li>Niccolò:  +39 392 385 0100</li>
-                </ul>
+            <ul style="list-style-type: none;" class="contact-list">
+                <li>Agostino: +39 324 898 5320</li>
+                <li>Niccolò: +39 392 385 0100</li>
+            </ul>
             </p>
             <p>Instagram: <a href="https://instagram.com/luxury_wood" target="_blank">luxury_wood</a></p>
             <p>Facebook: <a href="https://facebook.com/luxurywood" target="_blank">Luxury Wood</a></p>
             <p>📍Indirizzo: Piove di Sacco, Via Puniga 80</p>
         </div>
-</section>
+    </section>
 
-   
-   
+
+
     <!-- Footer -->
     <footer>
         <div class="container">
@@ -345,20 +385,19 @@
         </div>
     </footer>
 
-   <!-- Popup -->
-        <div id="popup" class="popup-container">
-            <div class="popup-content">
-             <p>💬 Ciao! Se hai bisogno di assistenza contattaci su Whatsapp! 🤙🏻</p>
-             <button id="close-popup">Chiudi</button>
-            </div>
+    <!-- Popup -->
+    <div id="popup" class="popup-container">
+        <div class="popup-content">
+            <p>💬 Ciao! Se hai bisogno di assistenza contattaci su Whatsapp! 🤙🏻</p>
+            <button id="close-popup">Chiudi</button>
         </div>
-  
+    </div>
+
 
     <!-- Pulsante WhatsApp -->
     <a href="https://wa.me/393248985320" target="_blank" class="whatsapp-float">
         <img src="img/whatsapp-2.png" alt="WhatsApp">
     </a>
-   
 
 
 
@@ -369,23 +408,14 @@
 
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
 
-<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
+
 </html>
-
-
-
-
-
-
-
-
-
-
-
