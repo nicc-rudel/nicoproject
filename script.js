@@ -247,6 +247,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const openModalButtons = document.querySelectorAll(".open-modal");
   openModalButtons.forEach(button => {
     button.addEventListener("click", function () {
+      const nav = document.getElementsByTagName("nav")[0];
       const modalId = this.dataset.modal;
       const modal = document.getElementById(modalId);
       if (modal) {
@@ -256,6 +257,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (progressBar) {
           progressBar.style.transition = "none";
         }
+        nav.style.display="none";
       }
     });
   });
@@ -264,9 +266,11 @@ document.addEventListener("DOMContentLoaded", function () {
   const closeModalButtons = document.querySelectorAll(".modal .close");
   closeModalButtons.forEach(btn => {
     btn.addEventListener("click", function () {
+      const nav = document.getElementsByTagName("nav")[0];
       const modal = this.closest(".modal");
       if (modal) {
         modal.style.display = "none";
+        nav.style.display="flex";
       }
       resetAutoSlide();
     });
