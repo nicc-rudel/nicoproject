@@ -20,6 +20,7 @@
         Hai impostato le preferenze per i cookie.
         <button id="closeConsent">Chiudi</button>
     </div>
+
     
     <!-- Header -->
     <header>
@@ -33,8 +34,8 @@
                 <div class="dropdown">
                     <button class="dropbtn">Menu ▼</button>
                     <div class="dropdown-content">
+                        <a href="#servizi">Alcuni dei nostri servizi</a>
                         <a href="#chi-siamo">Chi Siamo</a>
-                        <a href="#servizi">Servizi</a>
                         <a href="#foto-lavori">Foto Lavori</a>
                         <a href="#preventivo">Preventivo</a>
                         <a href="#contatti">Contatti</a>
@@ -50,7 +51,7 @@
     <!-- Servizi -->
     <section id="servizi" class="services">
         <div class="container">
-            <h2>I Nostri Servizi</h2>
+            <h2>Alcuni dei nostri servizi</h2>
             <div class="gallery">
                     <div class="slider-container">
                         <div class="slider">
@@ -69,18 +70,6 @@
                                 <img src="img/restauro3.jpeg" alt="Restauro pavimenti antichi">
                                 <button class="open-modal" data-modal="modal3">🔍 Scopri di più</button>
                             </div>
-                            <!--<div class="slide">
-                                <h3>lavorazione 4</h3>
-                                <img src="" alt="lavorazione 4">
-                                <button class="open-modal" data-modal="modal4">🔍 Scopri di più</button>
-                            </div>
-                                
-                            <div class="slide">
-                                <h3>lavorazione 5</h3>
-                                <img src="" alt="lavorazione 5">
-                                <button class="open-modal" data-modal="modal5">🔍 Scopri di più</button>
-                            </div>-->
-
                         </div>
 
                         <!-- Frecce di navigazione -->
@@ -124,30 +113,14 @@
                                 Ogni intervento viene preceduto da un’attenta analisi dello stato del pavimento: identifichiamo eventuali danni, instabilità o alterazioni, per intervenire in modo mirato con soluzioni compatibili ai materiali d’epoca. Utilizziamo oli, cere o vernici naturali selezionate per garantire protezione duratura e resa estetica coerente con l’epoca del manufatto.
                                 Il nostro obiettivo è restituire integrità e valore al pavimento, rispettando il suo carattere storico e garantendo al tempo stesso funzionalità e resistenza nel tempo.</p>
                         </div>
-                    </div>
-                    
-                    <div id="modal4" class="modal">
-                        <div class="modal-content">
-                            <span class="close">&times;</span>
-                            <h3>lavorazione 4</h3>
-                            <p>Descrizione dettagliata della lavorazione...</p>
-                        </div>
-                    </div>
-                   
-                    <div id="modal5" class="modal">
-                        <div class="modal-content">
-                            <span class="close">&times;</span>
-                            <h3>lavorazione 5</h3>
-                            <p>Descrizione dettagliata della lavorazione...</p>
-                        </div>
-                    </div>
-            </div>
+                    </div>   
             <div class="dots-container">
-                <span class="dot" data-slide="0"></span>
                 <span class="dot" data-slide="1"></span>
                 <span class="dot" data-slide="2"></span>
                 <span class="dot" data-slide="3"></span>
-                <span class="dot" data-slide="4"></span>
+            </div>
+            <div class="progress-bar-container">
+                <div class="progress-bar"></div>
             </div>
 
 
@@ -183,6 +156,7 @@
         <form id="filterForm" class="filter-container">
             <label for="category">Categoria:</label>
             <select id="category" class="custom-select">
+                <option value="nessuna">Nessuna</option>
                 <option value="tutte">Tutte</option>
                 <option value="interni">Interni</option>
                 <option value="esterni">Esterni</option>
@@ -324,8 +298,8 @@
                 </div>
                 
                 <div class="form-group">
-                    <label for="notes">Contatto:</label>
-                    <textarea id="notes" rows="3" placeholder="Inserire Nome, Cognome e un Contatto per essere ricontattati"></textarea>
+                    <label for="notes">Note aggiuntive</label>
+                    <textarea id="notes" rows="3" placeholder="Descrivi eventuali particolarità dell'ambiente o richieste specifiche..."></textarea>
                 </div>
                 
                 <button type="button" id="calculateBtn">Calcola Preventivo</button>
@@ -359,6 +333,7 @@
             </p>
             <p>Instagram: <a href="https://instagram.com/luxury_wood" target="_blank">luxury_wood</a></p>
             <p>Facebook: <a href="https://facebook.com/luxurywood" target="_blank">Luxury Wood</a></p>
+            <p>📍Indirizzo: Piove di Sacco, Via Puniga 80</p>
         </div>
 </section>
 
@@ -367,6 +342,7 @@
     <!-- Footer -->
     <footer>
         <div class="container">
+            <p>P. IVA: </p>
             <p>© 2025 Luxury Wood - Tutti i diritti riservati</p>
         </div>
     </footer>
@@ -381,10 +357,19 @@
   
 
     <!-- Pulsante WhatsApp -->
-    <a href="https://wa.me/393923850100" target="_blank" class="whatsapp-float">
+    <a href="https://wa.me/393248985320" target="_blank" class="whatsapp-float">
         <img src="img/whatsapp-2.png" alt="WhatsApp">
     </a>
    
+
+
+
+
+
+
+
+
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
