@@ -47,84 +47,251 @@ document.addEventListener("DOMContentLoaded", function () {
         consent.style.display = "none";
     });
 });
-//menù a tendina iniziale
+//menu a tendina
 document.addEventListener("DOMContentLoaded", function () {
     let dropdownBtn = document.querySelector(".dropbtn");
     let dropdownMenu = document.querySelector(".dropdown-content");
 
-    dropdownBtn.addEventListener("click", function () {
-        dropdownMenu.style.display = dropdownMenu.style.display === "block" ? "none" : "block";
+    // Funzioni per aprire e chiudere il menù
+    function openDropdown() {
+        dropdownMenu.style.display = "block";
+    }
+
+    function closeDropdown() {
+        dropdownMenu.style.display = "none";
+    }
+
+    // Gestore per il click sul bottone: alterna la visibilità del menù
+    dropdownBtn.addEventListener("click", function (e) {
+        e.stopPropagation(); // Impedisce che il click si propaghi al documento
+        if (dropdownMenu.style.display === "block") {
+            closeDropdown();
+        } else {
+            openDropdown();
+        }
     });
 
-    // Chiudi il menù se si clicca fuori
+    // Apre il menù quando il mouse passa sopra il bottone o il contenuto
+    dropdownBtn.addEventListener("mouseover", openDropdown);
+    dropdownMenu.addEventListener("mouseover", openDropdown);
+
+    // Chiude il menù quando il mouse esce dal bottone o dal menù:
+    // Usiamo un breve ritardo per dare il tempo di passare da un elemento all'altro
+    dropdownBtn.addEventListener("mouseleave", function () {
+        setTimeout(function () {
+            if (!dropdownBtn.matches(":hover") && !dropdownMenu.matches(":hover")) {
+                closeDropdown();
+            }
+        }, 100);
+    });
+
+    dropdownMenu.addEventListener("mouseleave", function () {
+        setTimeout(function () {
+            if (!dropdownBtn.matches(":hover") && !dropdownMenu.matches(":hover")) {
+                closeDropdown();
+            }
+        }, 100);
+    });
+
+    // Chiude il menù se si clicca fuori dal bottone e dal menù
     document.addEventListener("click", function (event) {
         if (!dropdownBtn.contains(event.target) && !dropdownMenu.contains(event.target)) {
-            dropdownMenu.style.display = "none";
+            closeDropdown();
         }
     });
 });
 
 
+
 // caroselo immagini
-let images = document.querySelectorAll(".custom-image"); 
-let modal = document.getElementById("modal");
-let modalImg = document.getElementById("modalImg");
-let currentIndex = 0;
-let interval; // Per il movimento automatico del carosello
+document.addEventListener("DOMContentLoaded", function () {
+  /***************************************
+   * 1. CONFIGURAZIONE DEL CAROSELLO
+   ***************************************/
+  const slider = document.querySelector(".slider");
+  // Seleziona le slide reali (prima di aggiungere i cloni)
+  let realSlides = Array.from(slider.querySelectorAll(".slide"));
+  const totalRealSlides = realSlides.length; // ad es. 3
 
-// 🖼 Apri il modal e ferma il carosello
-document.querySelectorAll(".open-modal").forEach(button => {
-    button.addEventListener("click", function() {
-        let targetModal = document.getElementById(this.dataset.modal);
-        targetModal.style.display = "block";
-        stopSlider();
-    });
-});
+  // Clonazione: copia la prima e l'ultima slide
+  const firstClone = realSlides[0].cloneNode(true);
+  const lastClone = realSlides[realSlides.length - 1].cloneNode(true);
+  slider.appendChild(firstClone);
+  slider.insertBefore(lastClone, slider.firstElementChild);
 
-// ❌ Chiudi il modal e riavvia il carosello
-document.querySelectorAll(".close").forEach(closeBtn => {
-    closeBtn.addEventListener("click", function() {
-        this.closest(".modal").style.display = "none";
-        startSlider();
-    });
-});
+  // Ora tutte le slide (inclusi i cloni)
+  const allSlides = slider.querySelectorAll(".slide");
+  let currentIndex = 1; // impostiamo la prima slide reale
+  let isTransitioning = false;
+  slider.style.transform = `translateX(-${currentIndex * 100}%)`;
 
-// 🏹 Navigazione tra le immagini
-function prevImage() {
-    currentIndex = (currentIndex - 1 + images.length) % images.length;
-    modalImg.src = images[currentIndex].src;
-}
+  /***************************************
+   * 2. PROGRESSION BAR
+   ***************************************/
+  const progressBar = document.querySelector(".progress-bar");
 
-function nextImage() {
-    currentIndex = (currentIndex + 1) % images.length;
-    modalImg.src = images[currentIndex].src;
-}
-
-// 🔁 Avvia il carosello automaticamente
-function startSlider() {
-    interval = setInterval(() => {
-        nextImage();
-    }, 3000);
-}
-
-// ⏸ Ferma il carosello quando il modal è aperto
-function stopSlider() {
-    clearInterval(interval);
-}
-
-// 🖥️ Chiusura del modal con il tasto ESC
-document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") {
-        document.querySelectorAll(".modal").forEach(modal => {
-            modal.style.display = "none";
-        });
-        startSlider();
+  function resetProgressBar() {
+    if (progressBar) {
+      progressBar.style.transition = "none";
+      progressBar.style.width = "0%";
+      progressBar.offsetWidth; // forziamo il reflow
+      progressBar.style.transition = "width 4s linear";
+      progressBar.style.width = "100%";
     }
+  }
+  resetProgressBar();
+
+  /***************************************
+   * 3. FUNZIONI DI NAVIGAZIONE DEL CAROSELLO
+   ***************************************/
+  function goToSlide(index) {
+    slider.style.transition = "transform 0.6s ease-in-out";
+    slider.style.transform = `translateX(-${index * 100}%)`;
+  }
+
+  function nextSlide() {
+    if (isTransitioning) return;
+    isTransitioning = true;
+    currentIndex++;
+    goToSlide(currentIndex);
+    resetProgressBar();
+  }
+
+  function prevSlide() {
+    if (isTransitioning) return;
+    isTransitioning = true;
+    currentIndex--;
+    goToSlide(currentIndex);
+    resetProgressBar();
+  }
+
+  // Al termine della transizione, controlla se siamo su un clone e riposiziona di conseguenza
+  slider.addEventListener("transitionend", function () {
+    if (currentIndex === allSlides.length - 1) {
+      // Siamo sul clone della prima slide; reimposta alla prima reale
+      slider.style.transition = "none";
+      currentIndex = 1;
+      slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }
+    if (currentIndex === 0) {
+      // Siamo sul clone dell'ultima slide; reimposta all'ultima reale
+      slider.style.transition = "none";
+      currentIndex = totalRealSlides;
+      slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }
+    isTransitioning = false;
+    updateDots();
+  });
+
+  // Timer per l'auto slide: passa alla slide successiva ogni 4 secondi
+  let autoSlideInterval = setInterval(nextSlide, 4000);
+
+  function resetAutoSlide() {
+    clearInterval(autoSlideInterval);
+    autoSlideInterval = setInterval(nextSlide, 4000);
+    resetProgressBar();
+  }
+
+  // Gestione dei bottoni di navigazione
+  const nextBtn = document.getElementById("nextSlide");
+  const prevBtn = document.getElementById("prevSlide");
+
+  if (nextBtn) {
+    nextBtn.addEventListener("click", function () {
+      clearInterval(autoSlideInterval);
+      nextSlide();
+      resetAutoSlide();
+    });
+  }
+  if (prevBtn) {
+    prevBtn.addEventListener("click", function () {
+      clearInterval(autoSlideInterval);
+      prevSlide();
+      resetAutoSlide();
+    });
+  }
+
+  /***************************************
+   * 4. INDICATORI (DOTS)
+   ***************************************/
+  const dots = document.querySelectorAll(".dots-container .dot");
+
+  function updateDots() {
+    dots.forEach(dot => dot.classList.remove("active"));
+    // Calcola l'indice attivo relativo alle slide reali
+    let activeIndex = currentIndex;
+    if (activeIndex === 0) activeIndex = totalRealSlides;
+    if (activeIndex === allSlides.length - 1) activeIndex = 1;
+    if (dots[activeIndex - 1]) {
+      dots[activeIndex - 1].classList.add("active");
+    }
+  }
+
+  dots.forEach(dot => {
+    dot.addEventListener("click", function () {
+      clearInterval(autoSlideInterval);
+      // I dati nei dot sono 1-indexed (es. data-slide="1")
+      let slideNumber = parseInt(this.dataset.slide);
+      currentIndex = slideNumber;
+      slider.style.transition = "transform 0.6s ease-in-out";
+      slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+      updateDots();
+      resetAutoSlide();
+    });
+  });
+
+  /***************************************
+   * 5. GESTIONE DEI MODALI
+   ***************************************/
+  // Apertura del modal: cliccando sul bottone "scopri di più"
+  const openModalButtons = document.querySelectorAll(".open-modal");
+  openModalButtons.forEach(button => {
+    button.addEventListener("click", function () {
+      const modalId = this.dataset.modal;
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        modal.style.display = "block";
+        // Ferma l'auto slide e l'animazione della progress bar
+        clearInterval(autoSlideInterval);
+        if (progressBar) {
+          progressBar.style.transition = "none";
+        }
+      }
+    });
+  });
+
+  // Chiusura del modal tramite bottone (classe "close")
+  const closeModalButtons = document.querySelectorAll(".modal .close");
+  closeModalButtons.forEach(btn => {
+    btn.addEventListener("click", function () {
+      const modal = this.closest(".modal");
+      if (modal) {
+        modal.style.display = "none";
+      }
+      resetAutoSlide();
+    });
+  });
+
+  // Chiusura del modal cliccando sullo sfondo
+  window.addEventListener("click", function (event) {
+    document.querySelectorAll(".modal").forEach(modal => {
+      if (event.target === modal) {
+        modal.style.display = "none";
+        resetAutoSlide();
+      }
+    });
+  });
+
+  // Chiusura del modal con il tasto ESC
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape") {
+      document.querySelectorAll(".modal").forEach(modal => {
+        modal.style.display = "none";
+      });
+      resetAutoSlide();
+    }
+  });
 });
-
-// ✨ Avvia il carosello all'apertura della pagina
-startSlider();
-
 
 
 
@@ -160,6 +327,27 @@ function applyFilters() {
             img.style.display = "block";
         } else {
             img.style.display = "none";
+        }
+    });
+}
+document.getElementById("category").addEventListener("change", applyFilters);
+
+function applyFilters() {
+    let category = document.getElementById("category").value;
+    let images = document.querySelectorAll(".photo-gallery img");
+    let photoSection = document.getElementById("foto-lavori");
+
+    // La sezione rimane sempre visibile
+    photoSection.style.display = "block";
+
+    images.forEach(img => {
+        let imgCategories = img.getAttribute("data-category").split(" ");
+        
+        // Nasconde le immagini quando la categoria è "nessuna"
+        if (category === "nessuna") {
+            img.style.display = "none";
+        } else {
+            img.style.display = imgCategories.includes(category) || category === "tutte" ? "block" : "none";
         }
     });
 }
@@ -461,84 +649,5 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    autoSlide();
-});
-
-
-
-
-
-
-//carosello immagini
-document.addEventListener("DOMContentLoaded", function () {
-    const slider = document.querySelector(".slider");
-    const slides = document.querySelectorAll(".slide");
-    const prevBtn = document.getElementById("prevSlide");
-    const nextBtn = document.getElementById("nextSlide");
-    const dotsContainer = document.querySelector(".dots-container");
-    let currentSlide = 0;
-    const totalSlides = slides.length;
-    let autoSlideInterval;
-
-    // Creazione dinamica degli indicatori (dots)
-    slides.forEach((_, index) => {
-        const dot = document.createElement("span");
-        dot.classList.add("dot");
-        dot.dataset.index = index;
-        dotsContainer.appendChild(dot);
-    });
-
-    const dots = document.querySelectorAll(".dot");
-
-    function updateDots() {
-        dots.forEach(dot => dot.classList.remove("active"));
-        if (dots[currentSlide]) {
-            dots[currentSlide].classList.add("active");
-        }
-    }
-
-    function goToSlide(index) {
-        if (index < 0 || index >= totalSlides) return;
-        slider.style.transition = "transform 0.6s ease-in-out";
-        slider.style.transform = `translateX(-${index * 100}%)`;
-        currentSlide = index;
-        updateDots();
-    }
-
-    function nextSlide() {
-        const newIndex = (currentSlide + 1) % totalSlides;
-        goToSlide(newIndex);
-    }
-
-    function prevSlide() {
-        const newIndex = (currentSlide - 1 + totalSlides) % totalSlides;
-        goToSlide(newIndex);
-    }
-
-    function autoSlide() {
-        autoSlideInterval = setInterval(nextSlide, 4000);
-    }
-
-    prevBtn.addEventListener("click", function () {
-        clearInterval(autoSlideInterval);
-        prevSlide();
-        autoSlide();
-    });
-
-    nextBtn.addEventListener("click", function () {
-        clearInterval(autoSlideInterval);
-        nextSlide();
-        autoSlide();
-    });
-
-    dots.forEach(dot => {
-        dot.addEventListener("click", function () {
-            clearInterval(autoSlideInterval);
-            goToSlide(Number(dot.dataset.index));
-            autoSlide();
-        });
-    });
-
-    updateDots();
     autoSlide();
 });
