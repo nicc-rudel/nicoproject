@@ -97,15 +97,13 @@ header h1 {
 nav {
     display: flex;
     justify-content: center; /* Centra tutto il contenuto */
-    align-items: center;
-    background-color: #333;
-    padding: 10px;
+   
 }
 
 /* 📂 Dropdown */
 .dropdown {
     position: relative;
-    z-index: 1000; /* Assicura che il menu sia sopra altri elementi */
+    z-index: 800; /* Assicura che il menu sia sopra altri elementi */
 }
 
 /* 🔘 Bottone del menu */
@@ -152,6 +150,7 @@ nav {
 .dropdown-content a:hover {
     background-color: #B8860B;
     color: white;
+    border-radius: 6px;
 }
 
 /* ✨ Effetto di apertura */
@@ -227,6 +226,7 @@ nav {
     border-radius: 8px;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
     text-align: left;
+    z-index: 1000;
 }
 
 /* Migliora il titolo */
@@ -734,12 +734,3 @@ footer {
     background-color: #B8860B;
     transform: scale(1.3);
 }
-
-
-
-
-
-
-
-
-
