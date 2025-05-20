@@ -313,45 +313,59 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-//filtro immagini
-document.getElementById("category").addEventListener("change", applyFilters);
+document.addEventListener("DOMContentLoaded", function () {
+    // FUNZIONALITÀ MENU A TENDINA
+    let dropdown = document.querySelector(".dropdown-content");
+    let button = document.querySelector(".dropbtn");
 
-function applyFilters() {
-    let category = document.getElementById("category").value;
-    let images = document.querySelectorAll(".photo-gallery img");
+    button.addEventListener("click", function (event) {
+        event.stopPropagation(); // Impedisce la propagazione del click
+        dropdown.classList.toggle("show");
+    });
 
-    images.forEach(img => {
-        let imgCategories = img.getAttribute("data-category").split(" ");
-
-        if (category === "tutte" || imgCategories.includes(category)) {
-            img.style.display = "block";
-        } else {
-            img.style.display = "none";
+    // Chiude il menu se l'utente clicca fuori
+    window.addEventListener("click", function (event) {
+        if (!button.contains(event.target) && !dropdown.contains(event.target)) {
+            dropdown.classList.remove("show");
         }
     });
-}
-document.getElementById("category").addEventListener("change", applyFilters);
 
-function applyFilters() {
-    let category = document.getElementById("category").value;
-    let images = document.querySelectorAll(".photo-gallery img");
-    let photoSection = document.getElementById("foto-lavori");
+    // FUNZIONALITÀ FILTRO IMMAGINI
+    let categorySelect = document.getElementById("category");
+    categorySelect.addEventListener("change", applyFilters);
 
-    // La sezione rimane sempre visibile
-    photoSection.style.display = "block";
+    function applyFilters() {
+        let category = categorySelect.value;
+        let images = document.querySelectorAll(".photo-gallery img");
+        let photoSection = document.getElementById("foto-lavori");
 
-    images.forEach(img => {
-        let imgCategories = img.getAttribute("data-category").split(" ");
-        
-        // Nasconde le immagini quando la categoria è "nessuna"
-        if (category === "nessuna") {
-            img.style.display = "none";
-        } else {
-            img.style.display = imgCategories.includes(category) || category === "tutte" ? "block" : "none";
-        }
-    });
-}
+        // Mantiene la sezione foto visibile sempre
+        photoSection.style.display = "block";
 
+        images.forEach(img => {
+            let imgCategories = img.getAttribute("data-category").split(" ");
+
+            // Nasconde tutte le immagini se la categoria è "nessuna"
+            if (category === "nessuna") {
+                img.style.display = "none";
+            } else {
+                // Mostra le immagini se la categoria corrisponde oppure se si sceglie "tutte"
+                img.style.display = (category === "tutte" || imgCategories.includes(category)) ? "block" : "none";
+            }
+        });
+    }
+
+    // Imposta l'opzione di default in base al dispositivo:
+    // Su mobile: "nessuna" (le foto sono nascoste all'apertura)
+    // Su desktop: "tutte" (le foto vengono mostrate subito)
+    if (window.matchMedia("(max-width: 768px)").matches) {
+        categorySelect.value = "nessuna";
+    } else {
+        categorySelect.value = "tutte";
+    }
+
+    applyFilters();  // Applica i filtri in base al valore impostato
+});
 
 
 // Funzione per inviare l'email
