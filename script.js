@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Apre il menù quando il mouse passa sopra il bottone o il contenuto
     dropdownBtn.addEventListener("mouseover", openDropdown);
     dropdownMenu.addEventListener("mouseover", openDropdown);
-
+    
     // Chiude il menù quando il mouse esce dal bottone o dal menù:
     // Usiamo un breve ritardo per dare il tempo di passare da un elemento all'altro
     dropdownBtn.addEventListener("mouseleave", function () {
