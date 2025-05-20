@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Apre il menù quando il mouse passa sopra il bottone o il contenuto
     dropdownBtn.addEventListener("mouseover", openDropdown);
     dropdownMenu.addEventListener("mouseover", openDropdown);
-    
+
     // Chiude il menù quando il mouse esce dal bottone o dal menù:
     // Usiamo un breve ritardo per dare il tempo di passare da un elemento all'altro
     dropdownBtn.addEventListener("mouseleave", function () {
@@ -296,23 +296,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-//funzione menu a tendina sezione immagini
-document.addEventListener("DOMContentLoaded", function () {
-    let dropdown = document.querySelector(".dropdown-content");
-    let button = document.querySelector(".dropbtn");
-
-    button.addEventListener("click", function () {
-        dropdown.classList.toggle("show");
-    });
-
-    // Chiude il menu se l'utente clicca fuori
-    window.addEventListener("click", function (event) {
-        if (!button.contains(event.target) && !dropdown.contains(event.target)) {
-            dropdown.classList.remove("show");
-        }
-    });
-});
-
 document.addEventListener("DOMContentLoaded", function () {
     // FUNZIONALITÀ MENU A TENDINA
     let dropdown = document.querySelector(".dropdown-content");
@@ -366,6 +349,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     applyFilters();  // Applica i filtri in base al valore impostato
 });
+
 
 
 // Funzione per inviare l'email
@@ -548,28 +532,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
         doc.save("preventivo.pdf");
     });
-
-    // Funzione di invio email
-    sendQuoteBtn.addEventListener("click", function () {
-        let emailAddress = "luxurywoodpavimenti@gmail.com";
-        let subject = "Preventivo parquet";
-        let body = "Ecco il preventivo generato, in allegato il PDF.";
-
-        window.location.href = `mailto:${emailAddress}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    });
-
-    // Funzione di invio WhatsApp
-    whatsappQuoteBtn.addEventListener("click", function () {
-        let phoneNumber = "3923850100";
-        let message = "Ciao! Ti invio il preventivo per il parquet.";
-
-        let url = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
-        window.open(url, "_blank");
-    });
-
     // Funzione di reset
     resetBtn.addEventListener("click", function () {
         document.getElementById("quoteForm").reset();
         resultContainer.style.display = "none";
     });
 });
+
+
+
+
+
+
