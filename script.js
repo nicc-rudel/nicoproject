@@ -402,6 +402,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+
 // Funzione per mostrare il preventivo
 document.getElementById("showQuoteBtn").addEventListener("click", function () {
     let formSection = document.getElementById("quoteForm");
@@ -411,6 +412,19 @@ document.getElementById("showQuoteBtn").addEventListener("click", function () {
     } else {
         formSection.style.display = "none"; // Nasconde il form
     }
+});
+
+
+//funzione refresh sezione preventivo
+document.getElementById("resetBtn").addEventListener("click", function() {
+    // Resetta tutti gli input del form
+    document.getElementById("quoteForm").reset();
+
+    // Nasconde il prezzo personalizzato se era visibile
+    document.getElementById("customPriceGroup").style.display = "none";
+
+    // Nasconde la sezione del risultato
+    document.getElementById("resultContainer").style.display = "none";
 });
 
 
