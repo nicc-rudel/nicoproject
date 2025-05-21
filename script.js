@@ -415,134 +415,174 @@ document.getElementById("showQuoteBtn").addEventListener("click", function () {
 
 
 
+//sezione download preventivo
 document.addEventListener("DOMContentLoaded", function () {
-    // Selezione degli elementi HTML
-    let woodTypeSelect = document.getElementById("woodType");
-    let customPriceInput = document.getElementById("customPrice");
-    let surfaceInput = document.getElementById("surface");
-    let installationTypeSelect = document.getElementById("installationType");
-    let subfloorSelect = document.getElementById("subfloor");
-    let roomShapeSelect = document.getElementById("roomShape");
-    let accessoriesSelect = document.getElementById("accessories");
-    let locationSelect = document.getElementById("location");
-    let notesInput = document.getElementById("notes");
-    let calculateBtn = document.getElementById("calculateBtn");
-    let resetBtn = document.getElementById("resetBtn");
-    let downloadPdfBtn = document.getElementById("downloadBtn");
-    let sendQuoteBtn = document.getElementById("sendQuoteBtn");
-    let whatsappQuoteBtn = document.getElementById("whatsappQuoteBtn");
-    let priceBreakdown = document.getElementById("priceBreakdown");
-    let totalPrice = document.getElementById("totalPrice");
-    let resultContainer = document.getElementById("resultContainer");
+  // Selezione degli elementi HTML
+  let woodTypeSelect = document.getElementById("woodType");
+  let customPriceInput = document.getElementById("customPrice");
+  let surfaceInput = document.getElementById("surface");
+  let installationTypeSelect = document.getElementById("installationType");
+  let subfloorSelect = document.getElementById("subfloor");
+  let roomShapeSelect = document.getElementById("roomShape");
+  let accessoriesSelect = document.getElementById("accessories");
+  let locationSelect = document.getElementById("location");
+  let notesInput = document.getElementById("notes");
+  let calculateBtn = document.getElementById("calculateBtn");
+  let downloadPdfBtn = document.getElementById("downloadPdfBtn");
+  let priceBreakdown = document.getElementById("priceBreakdown");
+  let totalPrice = document.getElementById("totalPrice");
+  let resultContainer = document.getElementById("resultContainer");
 
-    // Prezzi fissi
-    const woodPrices = {
-        rovere: 45, noce: 60, teak: 75, doussie: 85, pino: 35
+  // Prezzi fissi
+  const woodPrices = { rovere: 45, noce: 60, teak: 75, doussie: 85, pino: 35 };
+  const installationPrices = { flottante: 15, incollata: 25, chiodata: 30 };
+  const subfloorPrices = { cemento: 0, gres: 5, legno: 0, irregolare: 8 };
+  const roomShapePrices = { rettangolare: 0, complessa: 3 };
+  const locationPrices = { urbano: 0, extraurbano: 50, montano: 100 };
+  const accessoryPrices = { battiscopa: 10, soglia: 25, ventilazione: 15 };
+
+  // Mostra il campo prezzo personalizzato se necessario
+  woodTypeSelect.addEventListener("change", function () {
+    document.getElementById("customPriceGroup").style.display =
+      woodTypeSelect.value === "custom" ? "block" : "none";
+  });
+
+  // Funzione di calcolo preventivo
+  function calcolaPreventivo() {
+    let surface = parseFloat(surfaceInput.value);
+    if (isNaN(surface) || surface <= 0) {
+      alert("Inserisci una superficie valida.");
+      return null;
+    }
+
+    let woodType = woodTypeSelect.value;
+    let customPrice = parseFloat(customPriceInput.value) || 0;
+    let installationType = installationTypeSelect.value;
+    let subfloorType = subfloorSelect.value;
+    let roomShape = roomShapeSelect.value;
+    let location = locationSelect.value;
+    let selectedAccessories = Array.from(accessoriesSelect.selectedOptions).map(opt => opt.value);
+
+    let woodPrice = woodType === "custom" ? customPrice : (woodPrices[woodType] || 0);
+    let installationPrice = installationPrices[installationType] || 0;
+    let subfloorPrice = subfloorPrices[subfloorType] || 0;
+    let roomShapePrice = roomShapePrices[roomShape] || 0;
+    let locationPrice = locationPrices[location] || 0;
+    let accessoriesCost = selectedAccessories.reduce((total, accessory) => total + (accessoryPrices[accessory] || 0), 0);
+
+    let totalCost = (woodPrice + installationPrice + subfloorPrice + roomShapePrice) * surface + locationPrice + accessoriesCost;
+
+    return {
+      woodType,
+      woodPrice,
+      customPrice,
+      surface,
+      installationType,
+      installationPrice,
+      subfloorType,
+      subfloorPrice,
+      roomShape,
+      roomShapePrice,
+      selectedAccessories,
+      accessoriesCost,
+      location,
+      locationPrice,
+      notes: notesInput.value,
+      totalCost
     };
+  }
 
-    const installationPrices = {
-        flottante: 15, incollata: 25, chiodata: 30
-    };
+  // Azione sul pulsante "Calcola"
+  calculateBtn.addEventListener("click", function () {
+    const data = calcolaPreventivo();
+    if (!data) return;
 
-    const subfloorPrices = {
-        cemento: 0, gres: 5, legno: 0, irregolare: 8
-    };
+    resultContainer.style.display = "block";
+    priceBreakdown.innerHTML = `
+      <p><strong>Legno:</strong> €${data.woodPrice}/m²</p>
+      <p><strong>Installazione:</strong> €${data.installationPrice}/m²</p>
+      <p><strong>Sottofondo:</strong> €${data.subfloorPrice}/m²</p>
+      <p><strong>Forma stanza:</strong> €${data.roomShapePrice}/m²</p>
+      <p><strong>Accessori:</strong> €${data.accessoriesCost.toFixed(2)}</p>
+      <p><strong>Località:</strong> +€${data.locationPrice}</p>
+    `;
+    totalPrice.innerHTML = `<h3>Totale stimato: €${data.totalCost.toFixed(2)}</h3>`;
+  });
 
-    const roomShapePrices = {
-        rettangolare: 0, complessa: 3
-    };
+  // Azione sul pulsante "Scarica PDF"
+  downloadPdfBtn.addEventListener("click", function () {
+    const data = calcolaPreventivo();
+    if (!data) return;
 
-    const locationPrices = {
-        urbano: 0, extraurbano: 50, montano: 100
-    };
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF({ orientation: "portrait", unit: "mm", format: "a4" });
 
-    const accessoryPrices = {
-        battiscopa: 10, soglia: 25, ventilazione: 15
-    };
+    const marginLeft = 20;
+    let y = 25;
 
-    // Mostra il campo "Prezzo personalizzato" se selezionato "Altro"
-    woodTypeSelect.addEventListener("change", function () {
-        document.getElementById("customPriceGroup").style.display = woodTypeSelect.value === "custom" ? "block" : "none";
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(20);
+    doc.setTextColor(0, 51, 153);
+    doc.text("Luxury Wood - Preventivo", marginLeft, y);
+
+    y += 10;
+    doc.setDrawColor(180, 180, 180);
+    doc.line(marginLeft, y, 190, y);
+
+    y += 10;
+    doc.setFontSize(12);
+    doc.setTextColor(0, 0, 0);
+    doc.setFont("helvetica", "normal");
+
+    // Dettaglio voci
+    const entries = [
+      ["Tipo di legno", data.woodType, `€${data.woodPrice}`, `${data.surface} m²`, `€${(data.woodPrice * data.surface).toFixed(2)}`],
+      ["Installazione", data.installationType, `€${data.installationPrice}`, `${data.surface} m²`, `€${(data.installationPrice * data.surface).toFixed(2)}`],
+      ["Sottofondo", data.subfloorType, `€${data.subfloorPrice}`, `${data.surface} m²`, `€${(data.subfloorPrice * data.surface).toFixed(2)}`],
+      ["Forma stanza", data.roomShape, `€${data.roomShapePrice}`, `${data.surface} m²`, `€${(data.roomShapePrice * data.surface).toFixed(2)}`],
+      ["Località", data.location, "-", "-", `€${data.locationPrice.toFixed(2)}`],
+      ["Accessori", data.selectedAccessories.join(", ") || "-", "-", "-", `€${data.accessoriesCost.toFixed(2)}`],
+    ];
+
+    doc.setFont("helvetica", "bold");
+    doc.text("Voce", marginLeft, y);
+    doc.text("Opzione", marginLeft + 40, y);
+    doc.text("Prezzo (€)", marginLeft + 90, y);
+    doc.text("Quantità (€)", marginLeft + 120, y);
+    doc.text("Totale (€)", marginLeft + 150, y);
+
+    doc.setFont("helvetica", "normal");
+    y += 6;
+    entries.forEach(row => {
+      doc.text(row[0], marginLeft, y);
+      doc.text(row[1], marginLeft + 40, y);
+      doc.text(row[2], marginLeft + 90, y);
+      doc.text(row[3], marginLeft + 120, y);
+      doc.text(row[4], marginLeft + 150, y);
+      y += 6;
     });
 
-    // Funzione di calcolo preventivo
-    calculateBtn.addEventListener("click", function () {
-        let surface = parseFloat(surfaceInput.value);
-        if (isNaN(surface) || surface <= 0) {
-            alert("Inserisci una superficie valida.");
-            return;
-        }
+    y += 6;
+    doc.setFont("helvetica", "bold");
+    doc.text(`Totale stimato: €${data.totalCost.toFixed(2)}`, marginLeft, y);
+    
+    if (data.notes.trim() !== "") {
+      y += 10;
+      doc.setFont("helvetica", "normal");
+      doc.text("Note:", marginLeft, y);
+      doc.setFont("helvetica", "italic");
+      y += 6;
+      doc.text(data.notes, marginLeft, y);
+    }
 
-        let woodType = woodTypeSelect.value;
-        let customPrice = parseFloat(customPriceInput.value) || 0;
-        let installationType = installationTypeSelect.value;
-        let subfloorType = subfloorSelect.value;
-        let roomShape = roomShapeSelect.value;
-        let location = locationSelect.value;
-        let selectedAccessories = Array.from(accessoriesSelect.selectedOptions).map(opt => opt.value);
+    // Footer
+    doc.setFontSize(10);
+    doc.text("Luxury Wood - Contatti: luxurywoodpavimenti@gmail.com | Tel: 392 3850 100", marginLeft, 285);
+    doc.text("Pagina 1", 180, 285);
 
-        // Calcolo dei costi base
-        let woodPrice = woodType === "custom" ? customPrice : (woodPrices[woodType] || 0);
-        let installationPrice = installationPrices[installationType] || 0;
-        let subfloorPrice = subfloorPrices[subfloorType] || 0;
-        let roomShapePrice = roomShapePrices[roomShape] || 0;
-        let locationPrice = locationPrices[location] || 0;
-
-        // Calcolo degli accessori
-        let accessoriesCost = selectedAccessories.reduce((total, accessory) => {
-            return total + (accessoryPrices[accessory] || 0);
-        }, 0);
-
-        let totalCost = (woodPrice + installationPrice + subfloorPrice + roomShapePrice) * surface + locationPrice + accessoriesCost;
-
-        // Mostra il risultato
-        resultContainer.style.display = "block";
-        priceBreakdown.innerHTML = `
-            <p><strong>Legno:</strong> €${woodPrice}/m²</p>
-            <p><strong>Installazione:</strong> €${installationPrice}/m²</p>
-            <p><strong>Sottofondo:</strong> €${subfloorPrice}/m²</p>
-            <p><strong>Forma stanza:</strong> €${roomShapePrice}/m²</p>
-            <p><strong>Accessori:</strong> €${accessoriesCost.toFixed(2)}</p>
-            <p><strong>Località:</strong> +€${locationPrice}</p>
-        `;
-        totalPrice.innerHTML = `<h3>Totale stimato: €${totalCost.toFixed(2)}</h3>`;
-    });
-
-    // Funzione per scaricare il PDF
-    downloadPdfBtn.addEventListener("click", function () {
-        const { jsPDF } = window.jspdf;
-        const doc = new jsPDF();
-
-        let woodType = woodTypeSelect.value;
-        let customPrice = customPriceInput.value;
-        let surface = surfaceInput.value;
-        let installationType = installationTypeSelect.value;
-        let subfloorType = subfloorSelect.value;
-        let roomShape = roomShapeSelect.value;
-        let location = locationSelect.value;
-        let notes = notesInput.value;
-        let accessories = Array.from(accessoriesSelect.selectedOptions).map(opt => opt.text).join(", ");
-
-        doc.text("Preventivo Parquet", 10, 10);
-        doc.text(`Tipo di legno: ${woodType}`, 10, 20);
-        if (woodType === "custom") doc.text(`Prezzo personalizzato: €${customPrice}/m²`, 10, 30);
-        doc.text(`Superficie: ${surface} m²`, 10, 40);
-        doc.text(`Tipo di posa: ${installationType}`, 10, 50);
-        doc.text(`Sottofondo: ${subfloorType}`, 10, 60);
-        doc.text(`Forma stanza: ${roomShape}`, 10, 70);
-        doc.text(`Accessori: ${accessories}`, 10, 80);
-        doc.text(`Località: ${location}`, 10, 90);
-        doc.text(`Note: ${notes}`, 10, 100);
-
-        doc.save("preventivo.pdf");
-    });
-    // Funzione di reset
-    resetBtn.addEventListener("click", function () {
-        document.getElementById("quoteForm").reset();
-        resultContainer.style.display = "none";
-    });
+    doc.save("preventivo_luxurywood_pavimenti.pdf");
+  });
 });
-
 
 
 
