@@ -561,9 +561,9 @@ document.addEventListener("DOMContentLoaded", function () {
     doc.setFont("helvetica", "bold");
     doc.text("Voce", marginLeft, y);
     doc.text("Opzione", marginLeft + 40, y);
-    doc.text("Prezzo (€)", marginLeft + 90, y);
-    doc.text("Quantità (€)", marginLeft + 120, y);
-    doc.text("Totale (€)", marginLeft + 150, y);
+    doc.text("Prezzo ", marginLeft + 90, y);
+    doc.text("Quantità ", marginLeft + 120, y);
+    doc.text("Totale ", marginLeft + 150, y);
 
     doc.setFont("helvetica", "normal");
     y += 6;
