@@ -353,6 +353,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     applyFilters();  // Applica i filtri in base al valore impostato
 });
+//Modal scorrimento immagini 
+const lightbox = GLightbox({
+    touchNavigation: true,
+    loop: true,
+    closeButton: true,
+    zoomable: false,
+  });
 
 
 
