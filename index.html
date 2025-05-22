@@ -8,6 +8,7 @@
     <title>Luxury Wood</title>
     <link rel="stylesheet" href="style.css">
     <meta name="description" content="Luxury Wood è un'azienda specializzata nella posa di pavimenti in legno.">
+    <link href="https://cdn.jsdelivr.net/npm/lightbox2@2.11.4/dist/css/lightbox.min.css" rel="stylesheet">
 
 </head>
 
@@ -197,13 +198,14 @@
 
             <!-- Galleria di immagini -->
             <div class="photo-gallery">
-                <img src="img/interno.jpeg" alt="interni" data-category="interni tutte" class="custom-image">
-                <img src="img/interno2.jpeg" alt="interni" data-category="interni tutte" class="custom-image">
-                <img src="img/bagno.jpeg" alt="interni" data-category="interni tutte" class="custom-image">
-                <img src="img/restauro2.jpeg" alt="restauri" data-category="restauri tutte" class="custom-image">
-                <img src="img/restauro.jpeg" alt="restauri" data-category="restauri tutte" class="custom-image">
-                <img src="img/WhatsApp Image 2025-04-27 at 01.50.16 (1).jpeg" alt="interni"
-                    data-category="interni tutte" class="custom-image">
+                <div class="photo-gallery">
+                  <a href="img/interno.jpeg" data-lightbox="gallery"><img src="img/interno.jpeg" alt="interni" class="custom-image"></a>
+                  <a href="img/interno2.jpeg" data-lightbox="gallery"><img src="img/interno2.jpeg" alt="interni" class="custom-image"></a>
+                  <a href="img/bagno.jpeg" data-lightbox="gallery"><img src="img/bagno.jpeg" alt="interni" class="custom-image"></a>
+                  <a href="img/restauro2.jpeg" data-lightbox="gallery"><img src="img/restauro2.jpeg" alt="restauri" class="custom-image"></a>
+                  <a href="img/restauro.jpeg" data-lightbox="gallery"><img src="img/restauro.jpeg" alt="restauri" class="custom-image"></a>
+                  <a href="img/WhatsApp Image 2025-04-27 at 01.50.16 (1).jpeg" data-lightbox="gallery"><img src="img/WhatsApp Image 2025-04-27 at 01.50.16 (1).jpeg" alt="interni" class="custom-image"></a>
+                </div>
             </div>
 
             <!-- Modal per visualizzazione immagini -->
@@ -411,16 +413,11 @@
 
 
 
-
+    <script src="https://cdn.jsdelivr.net/npm/lightbox2@2.11.4/dist/js/lightbox.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-
-
-
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-
     <script src="script.js"></script>
 </body>
 
