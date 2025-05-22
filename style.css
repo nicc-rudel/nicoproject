@@ -639,6 +639,13 @@ footer {
     
     .custom-image { width: 100%; max-width: 250px; margin: 10px auto; }
 }
+i.fab {
+    margin-right: 8px;
+    color: #3b5998; /* Colore Facebook */
+  }
+i.fa-instagram {
+    color: #e1306c; /* Colore Instagram */
+  }
 
 
 /* Popup style */
