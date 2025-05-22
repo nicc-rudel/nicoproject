@@ -734,6 +734,27 @@ i.fa-instagram {
     transition: 0.3s;
 }
 
+/*sezone mappa*/
+
+.contact-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.contact-info {
+    flex: 1;
+}
+
+.map-container {
+    flex: 1;
+    max-width: 400px; /* Limita la larghezza della mappa */
+}
+
+.contact-list {
+    list-style-type: none;
+    padding: 0;
+}
 
 
 
@@ -760,3 +781,4 @@ i.fa-instagram {
     background-color: #B8860B;
     transform: scale(1.3);
 }
+
