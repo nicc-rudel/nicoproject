@@ -121,6 +121,24 @@ header h2{
     opacity: 0.7;
   }
 }
+/*container numero di telefono*/
+.contact-box {
+  background-color: #ffffff22;       /* leggero sfondo trasparente */
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+  display: inline-block;
+  border: 1px solid #fff;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.contact-box:hover {
+  background-color: #ffffff55;
+  color: #000;
+}
 
 /* Nascondi contatti su mobile */
 @media (max-width: 768px) {
