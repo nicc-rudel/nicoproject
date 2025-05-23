@@ -733,6 +733,15 @@ i.fa-instagram {
     }
 }
 
+/*telefono*/
+.contact-title {
+    margin-bottom: 4px;
+}
+
+.contact-list {
+    margin-top: 0;
+    list-style-type: none;
+}
 
 
 /* Pulsante WhatsApp */
