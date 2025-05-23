@@ -89,6 +89,24 @@ header h2{
     background: red;
     color: white;
 }
+/*modalità di visualizzazione desktop*/
+@media (min-width: 769px) {
+    header h1,
+    header h2 {
+        text-align: left;
+        padding-left: 40px; /* o quanto ti serve */
+    }
+
+    header nav {
+        text-align: left;
+        padding-left: 40px; /* anche qui, per allineare il menu */
+    }
+
+    .container {
+        margin: 0 auto;
+        text-align: left;
+    }
+}
 
 
 
