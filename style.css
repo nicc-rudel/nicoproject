@@ -12,118 +12,111 @@ body {
 }
 
 /* 🏠 Header */
+/* HEADER BASE */
 header {
-    background-image: url('img/background-header.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    color: #ffffff;
-    padding: 10px 0;
+  background-image: url('img/background-header.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  color: #ffffff;
+  padding: 10px 0;
 }
 
 header .logo {
-    vertical-align: middle;
+  vertical-align: middle;
 }
 
-header nav ul {
-    list-style: none;
-    text-align: right;
-    padding: 0;
-}
-
-header nav ul li {
-    display: inline;
-    margin-right: 20px;
-}
-
-header nav ul li a {
-    color: #333;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-header nav ul li a:hover {
-    background-color: #333;
-    color: #fff;
-    padding: 5px;
-    border-radius: 10px;
-    transition: background-color 0.2s ease, box-shadow 0.2s ease;
-}
 header h1,
-header h2{
-    text-align: center;
-    font-size: 2.5em;
-    margin: 0;
-    padding: 20px 0;
-    color: #fff;
+header h2 {
+  text-align: center;
+  font-size: 2.5em;
+  margin: 0;
+  padding: 20px 0;
+  color: #fff;
 }
-/* 🎯 Miglioramento Header solo per Desktop */
-@media (min-width: 769px) {
-    header h1,
-    header h2,
-    header nav {
-        text-align: left;
-        padding-left: 40px;
-    }
 
-    header h1 {
-        font-size: 3em;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
-
-    header h2 {
-        font-size: 1.5em;
-        margin-top: 5px;
-    }
-
-    header .logo {
-        margin-right: 10px;
-        vertical-align: middle;
-    }
-
-    .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        text-align: left;
-    }
+/* CONTAINER */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  text-align: left;
 }
-/*contatti header*/
-/* Container nav con dropdown a sinistra e contatti a destra su desktop */
-@media (min-width: 769px) {
-  .header-nav {
-    display: flex;
-    justify-content: space-between; /* spazio tra dropdown e contatti */
-    align-items: center;
-    padding: 0 40px;
-    margin-top: 10px;
-  }
 
-  .dropdown {
-    order: 1;
-  }
-
-  .header-contacts {
-    order: 2;
-    display: flex;
-    gap: 20px;
-  }
-
-  .contact-link {
-    color: #fff;
-    font-size: 20px;
-    text-decoration: none;
-    transition: opacity 0.2s ease;
-  }
-
-  .contact-link:hover {
-    opacity: 0.7;
-  }
+/* HEADER NAV BASE */
+.header-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
 }
-/*container numero di telefono*/
+
+/* DROPDOWN MOBILE */
+.dropdown {
+  position: relative;
+  display: block;
+}
+
+.dropbtn {
+  background-color: #333;
+  color: white;
+  padding: 10px 16px;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #222;
+  min-width: 200px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  border-radius: 6px;
+}
+
+.dropdown-content a {
+  color: #fff;
+  padding: 10px 14px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #444;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* DESKTOP MENU (visibile solo su desktop) */
+.desktop-menu {
+  display: none;
+}
+
+/* HEADER CONTACTS */
+.header-contacts {
+  display: none;
+}
+
+/* CONTACT LINK STILE */
+.contact-link {
+  color: #fff;
+  font-size: 20px;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.contact-link:hover {
+  opacity: 0.7;
+}
+
+/* BOX NUMERO TELEFONO */
 .contact-box {
-  background-color: #333;       
+  background-color: #333;
   color: #fff;
   padding: 8px 14px;
   border-radius: 6px;
@@ -140,8 +133,81 @@ header h2{
   color: #000;
 }
 
-/* Nascondi contatti su mobile */
+/* DESKTOP STYLES */
+@media (min-width: 769px) {
+  header h1,
+  header h2,
+  header nav {
+    text-align: left;
+    padding-left: 40px;
+  }
+
+  header h1 {
+    font-size: 3em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  header h2 {
+    font-size: 1.5em;
+    margin-top: 5px;
+  }
+
+  header .logo {
+    margin-right: 10px;
+    vertical-align: middle;
+  }
+
+  .header-nav {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    margin-top: 10px;
+  }
+
+  .desktop-menu {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .desktop-menu li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: background-color 0.2s ease;
+  }
+
+  .desktop-menu li a:hover {
+    background-color: #ffffff44;
+  }
+
+  .dropdown {
+    display: none; /* Nasconde dropdown su desktop */
+  }
+
+  .header-contacts {
+    display: flex;
+    gap: 20px;
+  }
+}
+
+/* MOBILE STYLES */
 @media (max-width: 768px) {
+  .desktop-menu {
+    display: none;
+  }
+
+  .dropdown {
+    display: block;
+  }
+
   .header-contacts {
     display: none;
   }
