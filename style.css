@@ -40,7 +40,7 @@ header h2 {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
-  text-align: left;
+  /*text-align: left;*/
 }
 
 /* HEADER NAV BASE */
@@ -198,10 +198,17 @@ header h2 {
   }
 }
 
+
 /* MOBILE STYLES */
-@media (max-width: 768px) {
+
+/*prima era 768px, prova con 1224px*/
+@media (max-width: 1223px) {
   .desktop-menu {
     display: none;
+  }
+
+  .header-nav{
+    justify-content: center;
   }
 
   .dropdown {
@@ -259,7 +266,7 @@ header h2 {
 
     .container {
         margin: 0 auto;
-        text-align: left;
+        /*text-align: left;*/
     }
 }
 
@@ -877,8 +884,9 @@ i.fa-instagram {
 }
 
 .popup-container.show {
-    opacity: 1;
-    transform: translateY(0);
+    /*opacity: 1;
+    transform: translateY(0);*/
+    display: block;
 }
 
 .popup-button:hover {
@@ -980,4 +988,3 @@ i.fa-instagram {
     background-color: #B8860B;
     transform: scale(1.3);
 }
-

@@ -308,12 +308,14 @@ document.addEventListener("DOMContentLoaded", function () {
     button.addEventListener("click", function (event) {
         event.stopPropagation(); // Impedisce la propagazione del click
         dropdown.classList.toggle("show");
+        
     });
 
     // Chiude il menu se l'utente clicca fuori
     window.addEventListener("click", function (event) {
         if (!button.contains(event.target) && !dropdown.contains(event.target)) {
             dropdown.classList.remove("show");
+            
         }
     });
 
