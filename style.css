@@ -95,6 +95,7 @@ header h2 {
 /* DESKTOP MENU (visibile solo su desktop) */
 .desktop-menu {
   display: none;
+    background-color: #333;
 }
 
 /* HEADER CONTACTS */
@@ -112,7 +113,6 @@ header h2 {
 
 .contact-link:hover {
   opacity: 0.7;
-  background-color:#333;
 }
 
 /* BOX NUMERO TELEFONO */
