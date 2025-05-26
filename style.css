@@ -108,6 +108,7 @@ header h2 {
   font-size: 20px;
   text-decoration: none;
   transition: opacity 0.2s ease;
+  color-background: #fffff;
 }
 
 .contact-link:hover {
