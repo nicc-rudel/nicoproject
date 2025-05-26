@@ -104,7 +104,7 @@ header h2 {
 
 /* CONTACT LINK STILE */
 .contact-link {
-  color: #fff;
+  color: #333;
   font-size: 20px;
   text-decoration: none;
   transition: opacity 0.2s ease;
