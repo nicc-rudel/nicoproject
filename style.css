@@ -112,6 +112,7 @@ header h2 {
 
 .contact-link:hover {
   opacity: 0.7;
+  background-color:#333;
 }
 
 /* BOX NUMERO TELEFONO */
