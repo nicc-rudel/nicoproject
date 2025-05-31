@@ -522,12 +522,13 @@ ul.parquet-list {
     position: relative;
 }
 
-.parquet-list li::before {
+/*.parquet-list li::before {
     content: "🪵";
     position: absolute;
     left: 0;
     top: 0;
 }
+*/
 
 
 
