@@ -625,22 +625,3 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-//transizione link
-document.querySelectorAll('.contact-link').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href');
-        const targetElement = document.querySelector(targetId);
-
-        window.scrollTo({
-            top: targetElement.offsetTop - 50, // Offset per evitare sovrapposizione con header
-            behavior: 'smooth'
-        });
-    });
-});
-
-
-
-
-
-
