@@ -503,6 +503,27 @@ nav {
     background-color: #D0BEA6;
 }
 
+/*lista pavimenti*/
+.parquet-list {
+    list-style: none;
+    padding-left: 0;
+    font-size: 1.05rem;
+    line-height: 1.6;
+}
+
+.parquet-list li {
+    margin-bottom: 0.7em;
+    padding-left: 1.5em;
+    position: relative;
+}
+
+.parquet-list li::before {
+    content: "🪵";
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
 
 
 /* 🏷️ Titolo Foto Lavori */
