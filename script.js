@@ -1,9 +1,9 @@
-
-//coockies
+//coockie
 document.addEventListener("DOMContentLoaded", function () {
     const banner = document.getElementById("cookieBanner");
     const acceptBtn = document.getElementById("acceptCookies");
     const declineBtn = document.getElementById("declineCookies");
+    const continueBtn = document.getElementById("continueWithoutCookies"); // NUOVO
     const consent = document.getElementById("cookieConsent");
     const closeConsentBtn = document.getElementById("closeConsent");
 
@@ -23,30 +23,35 @@ document.addEventListener("DOMContentLoaded", function () {
         if (parts.length === 2) return parts.pop().split(";").shift();
     }
 
-    if (!getCookie("cookieAccepted")) {
+    if (!getCookie("cookieAccepted") && !sessionStorage.getItem("noCookie")) {
         banner.style.display = "block";
         consent.style.display = "none";
     } else {
         banner.style.display = "none";
-        consent.style.display = "none"; // Assicura che la scritta sia nascosta
+        consent.style.display = "none";
     }
 
     acceptBtn.addEventListener("click", function () {
-        setCookie("cookieAccepted", "true", 1);
+        setCookie("cookieAccepted", "true", 30);
         banner.style.display = "none";
-        consent.style.display = "none"; // Nasconde subito la scritta
     });
 
     declineBtn.addEventListener("click", function () {
-        setCookie("cookieAccepted", "false", 1);
+        setCookie("cookieAccepted", "false", 30);
         banner.style.display = "none";
-        consent.style.display = "none";
+    });
+
+    // ✅ Nuovo pulsante: continua senza cookie
+    continueBtn.addEventListener("click", function () {
+        sessionStorage.setItem("noCookie", "true"); // solo per la sessione
+        banner.style.display = "none";
     });
 
     closeConsentBtn.addEventListener("click", function () {
         consent.style.display = "none";
     });
 });
+
 //menù dropdown
 document.addEventListener("DOMContentLoaded", function () {
     let dropdownBtn = document.querySelector(".dropbtn");
