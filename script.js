@@ -47,10 +47,11 @@ document.addEventListener("DOMContentLoaded", function () {
         consent.style.display = "none";
     });
 });
-//menu a tendina
+//menù dropdown
 document.addEventListener("DOMContentLoaded", function () {
     let dropdownBtn = document.querySelector(".dropbtn");
     let dropdownMenu = document.querySelector(".dropdown-content");
+    let dropdownItems = dropdownMenu.querySelectorAll("a"); // Se le voci del menu sono <a>
 
     // Funzioni per aprire e chiudere il menù
     function openDropdown() {
@@ -75,8 +76,7 @@ document.addEventListener("DOMContentLoaded", function () {
     dropdownBtn.addEventListener("mouseover", openDropdown);
     dropdownMenu.addEventListener("mouseover", openDropdown);
 
-    // Chiude il menù quando il mouse esce dal bottone o dal menù:
-    // Usiamo un breve ritardo per dare il tempo di passare da un elemento all'altro
+    // Chiude il menù quando il mouse esce
     dropdownBtn.addEventListener("mouseleave", function () {
         setTimeout(function () {
             if (!dropdownBtn.matches(":hover") && !dropdownMenu.matches(":hover")) {
@@ -93,11 +93,18 @@ document.addEventListener("DOMContentLoaded", function () {
         }, 100);
     });
 
-    // Chiude il menù se si clicca fuori dal bottone e dal menù
+    // Chiude il menù se si clicca fuori
     document.addEventListener("click", function (event) {
         if (!dropdownBtn.contains(event.target) && !dropdownMenu.contains(event.target)) {
             closeDropdown();
         }
+    });
+
+    // ✅ Chiude il menù se si clicca su una voce
+    dropdownItems.forEach(function (item) {
+        item.addEventListener("click", function () {
+            closeDropdown();
+        });
     });
 });
 
