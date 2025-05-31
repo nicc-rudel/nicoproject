@@ -252,6 +252,11 @@ header h2 {
     background: red;
     color: white;
 }
+
+#continueWithoutCookies{
+    background: black;
+    color: white;
+}
 /*modalità di visualizzazione desktop*/
 @media (min-width: 769px) {
     header h1,
