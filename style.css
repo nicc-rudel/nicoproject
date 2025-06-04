@@ -445,6 +445,29 @@ nav {
     cursor: pointer;
 }
 
+/* progression bar puntata*/
+.dots-container {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.dot.active {
+    background-color: #B8860B;
+    transform: scale(1.3);
+}
+
+
 /* Ottimizzazione per mobile */
 @media (max-width: 768px) {
     .modal-content {
@@ -522,15 +545,6 @@ ul.parquet-list {
     padding-left: 1.5em;
     position: relative;
 }
-
-/*.parquet-list li::before {
-    content: "🪵";
-    position: absolute;
-    left: 0;
-    top: 0;
-}
-*/
-
 
 
 /* 🏷️ Titolo Foto Lavori */
@@ -880,75 +894,6 @@ i.fa-instagram {
     color: #e1306c; /* Colore Instagram */
   }
 
-
-/* Popup style */
-.popup-container {
-    position: fixed;
-    bottom: 90px; /* Altezza sopra il pulsante di WhatsApp */
-    right: 20px;
-    background: white;
-    padding: 15px;
-    border-radius: 30px;
-    box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
-    text-align: center;
-    display: none; /* Nascondiamo il pop-up all'inizio */
-    z-index: 1000;
-    width: 250px; /* Adatta la larghezza per non coprire troppo */
-}
-
-.popup-content p {
-    font-size: 18px;
-    color: #333;
-}
-
-
-/* Creazione della "nuvoletta" */
-.popup-container::after {
-    content: "";
-    position: absolute;
-    bottom: -10px; /* Posiziona la freccia sotto il pop-up */
-    right: 30px;
-    width: 0;
-    height: 0;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-top: 10px solid white; /* Colore della nuvoletta */
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
-}
-
-.popup-container.show {
-    /*opacity: 1;
-    transform: translateY(0);*/
-    display: block;
-}
-
-.popup-button:hover {
-    background-color: #1DA851;
-}
-
-#close-popup {
-    background: #333;
-    color: white;
-    padding: 5px 10px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    margin-top: 10px;
-}
-
-#close-popup:hover {
-    background: #555;
-}
-@media (max-width: 600px) {
-    .popup-container {
-        width: 90%;
-        right: 5%;
-        bottom: 10px;
-    }
-}
-
 /*telefono*/
 .contact-title {
     margin-bottom: 4px;
@@ -976,50 +921,74 @@ i.fa-instagram {
     transition: 0.3s;
 }
 
-/*sezone mappa*/
-
-.contact-wrapper {
-    display: flex;
-    align-items: center;
-    gap: 20px;
+/* Popup style */
+.popup-container {
+    position: fixed;
+    bottom: 90px; /* Altezza sopra il pulsante di WhatsApp */
+    right: 20px;
+    background: white;
+    padding: 15px;
+    border-radius: 30px;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+    text-align: center;
+    display: none; /* Nascondiamo il pop-up all'inizio */
+    z-index: 1000;
+    width: 250px; /* Adatta la larghezza per non coprire troppo */
 }
 
-.contact-info {
-    flex: 1;
+.popup-content p {
+    font-size: 18px;
+    color: #333;
 }
 
-.map-container {
-    flex: 1;
-    max-width: 400px; /* Limita la larghezza della mappa */
+/* Creazione della "nuvoletta" */
+.popup-container::after {
+    content: "";
+    position: absolute;
+    bottom: -10px; /* Posiziona la freccia sotto il pop-up */
+    right: 30px;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid white; /* Colore della nuvoletta */
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
 }
 
-.contact-list {
-    list-style-type: none;
-    padding: 0;
+.popup-container.show {
+    display: block;
 }
 
+/* Mostra la nuvoletta quando il pop-up è visibile */
+.popup-container.show::after {
+    opacity: 1;
+    transform: translateY(0);
+}
 
+.popup-button:hover {
+    background-color: #1DA851;
+}
 
-
-
-/* progression bar puntata*/
-.dots-container {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
+#close-popup {
+    background: #333;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
     margin-top: 10px;
 }
 
-.dot {
-    width: 12px;
-    height: 12px;
-    background-color: rgba(255, 255, 255, 0.5);
-    border-radius: 50%;
-    cursor: pointer;
-    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+#close-popup:hover {
+    background: #555;
 }
 
-.dot.active {
-    background-color: #B8860B;
-    transform: scale(1.3);
+@media (max-width: 600px) {
+    .popup-container {
+        width: 90%;
+        right: 5%;
+        bottom: 10px;
+    }
 }
