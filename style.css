@@ -425,6 +425,7 @@ nav {
     font-size: 22px;
     color: #333;
     text-align: center;
+    border-bottom: 2px solid #333;
 }
 
 /* Rende il testo più leggibile */
