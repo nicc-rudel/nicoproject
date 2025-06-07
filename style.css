@@ -74,14 +74,21 @@ header.scrolled h1 {
   padding: 10px 0;
 }
 
+/* 🌐 COMPENSAZIONE HEADER SU MOBILE */
+@media (max-width: 768px) {
+  body {
+    padding-top: 100px; /* compensa l'altezza fissa dell'header */
+  }
+}
+
 /* 🧠 VERSIONE MOBILE: solo su mobile riduce altezza e nasconde titoli */
 @media (max-width: 768px) {
   header.scrolled {
     padding: 10px 0;
   }
-
   header.scrolled .logo {
-    height: 40px;
+    height: 45px;
+    display: block;
   }
 
   header.scrolled h1,
