@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const header = document.querySelector("header");
 
   function handleScroll() {
-    // Applica la classe "scrolled" SOLO su mobile
+    // Solo su mobile
     if (window.innerWidth <= 768) {
       if (window.scrollY > 50) {
         header.classList.add("scrolled");
@@ -72,6 +72,7 @@ document.addEventListener("DOMContentLoaded", function () {
   window.addEventListener("scroll", handleScroll);
   window.addEventListener("resize", handleScroll);
   document.addEventListener("DOMContentLoaded", handleScroll);
+
 
 
 //menù dropdown
