@@ -22,13 +22,16 @@ body {
 header {
   position: fixed;
   top: 0;
+  left: 0;
+  width: 100%;
   background-image: url('img/background-header.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   color: #ffffff;
-  padding: 10px 0;
   z-index: 1000;
+  transition: all 0.3s ease;
+  padding: 20px 0;
 }
 /*adatta header quando si scrolla*/
 header {
