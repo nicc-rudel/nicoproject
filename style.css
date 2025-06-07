@@ -69,6 +69,13 @@ header.scrolled h1 {
   padding: 10px 0;
 }
 
+/* Imposta header NON fisso su mobile (max 768px) */
+@media (max-width: 768px) {
+  header {
+    position: static;
+  }
+}
+
 /* CONTAINER */
 .container {
   width: 90%;
