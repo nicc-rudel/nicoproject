@@ -24,6 +24,7 @@ body {
 
 /* 🏠 Header */
 /* HEADER BASE */
+/* BASE HEADER (mantienilo) */
 header {
   position: fixed;
   top: 0;
@@ -35,30 +36,17 @@ header {
   background-position: center;
   color: #ffffff;
   z-index: 1000;
-  transition: all 0.3s ease;
   padding: 20px 0;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
-}
-/*adatta header quando si scrolla*/
-header {
   transition: all 0.3s ease;
-  padding: 20px 0;
-}
-
-header.scrolled {
-  padding: 10px 0;
-}
-
-header.scrolled h1 {
-  font-size: 2em; /* esempio di riduzione */
-  transition: font-size 0.3s ease;
 }
 
 header .logo {
   vertical-align: middle;
 }
 
+/* STILI PER TUTTI */
 header h1,
 header h2 {
   text-align: center;
@@ -69,9 +57,34 @@ header h2 {
   transition: all 0.3s ease;
 }
 
-header.scrolled h1 {
-  font-size: 2em;
-  padding: 10px 0;
+/* DESKTOP SCROLL LOGIC */
+@media (min-width: 769px) {
+  body {
+    padding-top: 120px;
+  }
+
+  header.scrolled {
+    padding: 10px 0;
+  }
+
+  header.scrolled .logo {
+    height: 45px;
+  }
+
+  header.scrolled h1 {
+    font-size: 2em;
+    padding: 10px 0;
+  }
+
+  header.scrolled h2 {
+    font-size: 1.2em;
+    padding: 5px 0;
+  }
+
+  header .logo {
+    height: 60px;
+    transition: height 0.3s ease;
+  }
 }
 
 /* 🌐 COMPENSAZIONE HEADER SU MOBILE */
