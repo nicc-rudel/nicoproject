@@ -32,6 +32,7 @@ header {
   z-index: 1000;
   transition: all 0.3s ease;
   padding: 20px 0;
+  border-radius: 6px;
 }
 /*adatta header quando si scrolla*/
 header {
