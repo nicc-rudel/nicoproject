@@ -19,6 +19,7 @@ body {
 /* 🏠 Header */
 /* HEADER BASE */
 header {
+  position: fixed;
   background-image: url('img/background-header.jpg');
   background-size: cover;
   background-repeat: no-repeat;
