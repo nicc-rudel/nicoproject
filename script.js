@@ -53,15 +53,28 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 //modifica header quando si scrolla
-const header = document.querySelector("header");
+<script>
+  const header = document.querySelector("header");
 
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > 50) {
-      header.classList.add("scrolled");
+  function handleScroll() {
+    if (window.innerWidth > 768) {
+      // SOLO DESKTOP: aggiungi/rimuovi la classe 'scrolled'
+      if (window.scrollY > 50) {
+        header.classList.add("scrolled");
+      } else {
+        header.classList.remove("scrolled");
+      }
     } else {
+      // SU MOBILE: assicurati che la classe non ci sia
       header.classList.remove("scrolled");
     }
-  });
+  }
+
+  // Eventi da monitorare
+  window.addEventListener("scroll", handleScroll);
+  window.addEventListener("resize", handleScroll); // cambia layout se lo schermo cambia dimensione
+  document.addEventListener("DOMContentLoaded", handleScroll); // esegui subito
+</script>
 
 
 //menù dropdown
