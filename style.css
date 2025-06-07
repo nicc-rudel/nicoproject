@@ -74,16 +74,19 @@ header.scrolled h1 {
   padding: 10px 0;
 }
 
-/* Imposta header NON fisso su mobile (max 768px) */
+/* 🧠 VERSIONE MOBILE: solo su mobile riduce altezza e nasconde titoli */
 @media (max-width: 768px) {
-  header {
-    position: static;
-    padding: 20px 0 !important;
+  header.scrolled {
+    padding: 10px 0;
   }
 
-  header h1 {
-    font-size: 2.5em !important;
-    padding: 20px 0 !important;
+  header.scrolled .logo {
+    height: 40px;
+  }
+
+  header.scrolled h1,
+  header.scrolled h2 {
+    display: none;
   }
 }
 
