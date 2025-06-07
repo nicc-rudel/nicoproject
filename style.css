@@ -9,7 +9,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: #00000036;
-    padding-top: 192.5px;
+    padding-top: 185px;
 }
 
 .container {
@@ -32,7 +32,8 @@ header {
   z-index: 1000;
   transition: all 0.3s ease;
   padding: 20px 0;
-  border-radius: 6px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 /*adatta header quando si scrolla*/
 header {
