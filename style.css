@@ -59,6 +59,12 @@ header h2 {
   margin: 0;
   padding: 20px 0;
   color: #fff;
+  transition: all 0.3s ease;
+}
+
+header.scrolled h1 {
+  font-size: 2em;
+  padding: 10px 0;
 }
 
 /* CONTAINER */
