@@ -63,6 +63,7 @@ const header = document.querySelector("header");
     }
   });
 
+
 //menù dropdown
 document.addEventListener("DOMContentLoaded", function () {
     let dropdownBtn = document.querySelector(".dropbtn");
