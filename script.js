@@ -52,6 +52,22 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+//modifica header quando si scrolla
+
+  const header = document.querySelector("header");
+  let lastScrollTop = 0;
+
+  window.addEventListener("scroll", () => {
+    const currentScroll = window.scrollY;
+
+    if (currentScroll > 100) {
+      header.classList.add("scrolled");
+    } else {
+      header.classList.remove("scrolled");
+    }
+  });
+
+
 //menù dropdown
 document.addEventListener("DOMContentLoaded", function () {
     let dropdownBtn = document.querySelector(".dropbtn");
