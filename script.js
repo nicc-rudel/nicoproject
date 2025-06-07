@@ -53,20 +53,15 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 //modifica header quando si scrolla
-
-  const header = document.querySelector("header");
-  let lastScrollTop = 0;
+const header = document.querySelector("header");
 
   window.addEventListener("scroll", () => {
-    const currentScroll = window.scrollY;
-
-    if (currentScroll > 100) {
+    if (window.scrollY > 50) {
       header.classList.add("scrolled");
     } else {
       header.classList.remove("scrolled");
     }
   });
-
 
 //menù dropdown
 document.addEventListener("DOMContentLoaded", function () {
