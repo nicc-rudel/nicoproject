@@ -33,18 +33,16 @@ header {
 /*adatta header quando si scrolla*/
 header {
   transition: all 0.3s ease;
+  padding: 20px 0;
 }
 
 header.scrolled {
-  padding: 5px 0;
+  padding: 10px 0;
 }
 
-header.scrolled .desktop-menu {
-  display: none;
-}
-/*adatta titlo quando si scrolla*/
 header.scrolled h1 {
-  font-size: 1.8em;
+  font-size: 2em; /* esempio di riduzione */
+  transition: font-size 0.3s ease;
 }
 
 header .logo {
