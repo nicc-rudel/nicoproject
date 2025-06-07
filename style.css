@@ -27,6 +27,7 @@ header {
   background-position: center;
   color: #ffffff;
   padding: 10px 0;
+  z-index: 1000;
 }
 
 header .logo {
