@@ -60,7 +60,7 @@ header h2 {
 /* DESKTOP SCROLL LOGIC */
 @media (min-width: 769px) {
   body {
-    padding-top: 120px;
+    padding-top: 185px;
   }
 
   header.scrolled {
