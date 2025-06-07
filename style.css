@@ -30,6 +30,22 @@ header {
   padding: 10px 0;
   z-index: 1000;
 }
+/*adatta header quando si scrolla*/
+header {
+  transition: all 0.3s ease;
+}
+
+header.scrolled {
+  padding: 5px 0;
+}
+
+header.scrolled .desktop-menu {
+  display: none;
+}
+/*adatta titlo quando si scrolla*/
+header.scrolled h1 {
+  font-size: 1.8em;
+}
 
 header .logo {
   vertical-align: middle;
