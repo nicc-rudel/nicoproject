@@ -1,3 +1,8 @@
+/*transizione da menù a sezione*/
+html {
+  scroll-behavior: smooth;
+}
+
 /* 🌟 Generale */
 body {
     font-family: arial, sans-serif;
