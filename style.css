@@ -22,9 +22,7 @@ body {
     margin: 0 auto;
 }
 
-/* 🏠 Header */
-/* HEADER BASE */
-/* BASE HEADER (mantienilo) */
+/* === HEADER BASE === */
 header {
   position: fixed;
   top: 0;
@@ -44,9 +42,10 @@ header {
 
 header .logo {
   vertical-align: middle;
+  height: 60px;
+  transition: height 0.3s ease;
 }
 
-/* STILI PER TUTTI */
 header h1,
 header h2 {
   text-align: center;
@@ -57,56 +56,52 @@ header h2 {
   transition: all 0.3s ease;
 }
 
-/* DESKTOP SCROLL LOGIC */
+/* === HEADER SCROLL STATE === */
+header.scrolled h1 {
+  font-size: 2em;
+  padding: 10px 0;
+}
+
+header.scrolled h2 {
+  display: none; /* Nasconde sottotitolo se presente */
+}
+
+header.scrolled .logo {
+  height: 45px;
+}
+
+/* === DESKTOP: padding al body per compensare header fisso === */
 @media (min-width: 769px) {
   body {
-    padding-top: 185px;
+    padding-top: 120px;
   }
 
   header.scrolled {
     padding: 10px 0;
   }
-
-  header.scrolled .logo {
-    height: 45px;
-  }
-
-  header.scrolled h1 {
-    font-size: 2em;
-    padding: 10px 0;
-  }
-
-  header.scrolled h2 {
-    font-size: 1.2em;
-    padding: 5px 0;
-  }
-
-  header .logo {
-    height: 60px;
-    transition: height 0.3s ease;
-  }
 }
 
-/* 🌐 COMPENSAZIONE HEADER SU MOBILE */
+/* === MOBILE: padding minore === */
 @media (max-width: 768px) {
   body {
-    padding-top: 100px; /* compensa l'altezza fissa dell'header */
+    padding-top: 90px;
   }
-}
 
-/* 🧠 VERSIONE MOBILE: solo su mobile riduce altezza e nasconde titoli */
-@media (max-width: 768px) {
+  header h2 {
+    display: block;
+    font-size: 1.2em;
+  }
+
+  header.scrolled h2 {
+    display: none;
+  }
+
   header.scrolled {
     padding: 10px 0;
   }
-  header.scrolled .logo {
-    height: 45px;
-    display: block;
-  }
 
-  header.scrolled h1,
-  header.scrolled h2 {
-    display: none;
+  header.scrolled .logo {
+    height: 50px;
   }
 }
 
