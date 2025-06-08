@@ -9,11 +9,11 @@ body {
     margin: 0;
     padding: 0;
     background-color: #00000036;
-    padding-top: 195px;
+    padding-top: 200px;
 }
 @media (max-width: 768px) {
   body {
-    padding-top: 0 !important;
+    padding-top: 200px !important;
   }
 }
 
