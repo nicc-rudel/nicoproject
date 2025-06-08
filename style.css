@@ -72,7 +72,7 @@ header.scrolled .logo {
 /* === DESKTOP: padding al body per compensare header fisso === */
 @media (min-width: 769px) {
   body {
-    padding-top: 120px;
+    padding-top: 190px;
   }
 
   header.scrolled {
@@ -83,7 +83,7 @@ header.scrolled .logo {
 /* === MOBILE: padding minore === */
 @media (max-width: 768px) {
   body {
-    padding-top: 90px;
+    padding-top: 150px;
   }
 
   header h2 {
