@@ -54,25 +54,24 @@ document.addEventListener("DOMContentLoaded", function () {
 
 //modifica header quando si scrolla
 
-  const header = document.querySelector("header");
+document.addEventListener("DOMContentLoaded", function () {
+const header = document.querySelector("header");
 
-  function handleScroll() {
-    // Solo su mobile
-    if (window.innerWidth <= 768) {
-      if (window.scrollY > 50) {
-        header.classList.add("scrolled");
-      } else {
-        header.classList.remove("scrolled");
-      }
-    } else {
-      header.classList.remove("scrolled");
-    }
+function handleScroll() {
+  const isDesktop = window.innerWidth >= 769;
+  const scrollY = window.scrollY;
+
+  if (scrollY > 50) {
+    header.classList.add("scrolled");
+  } else {
+    header.classList.remove("scrolled");
   }
+}
 
-  window.addEventListener("scroll", handleScroll);
-  window.addEventListener("resize", handleScroll);
-  document.addEventListener("DOMContentLoaded", handleScroll);
-
+window.addEventListener("scroll", handleScroll);
+window.addEventListener("resize", handleScroll);
+handleScroll(); // chiamata iniziale
+});
 
 
 //menù dropdown
