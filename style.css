@@ -73,7 +73,7 @@ header.scrolled .logo {
 /* === DESKTOP: padding al body per compensare header fisso === */
 @media (min-width: 769px) {
   body {
-    padding-top: 120px;
+    padding-top: 150px;
   }
 
   header.scrolled {
