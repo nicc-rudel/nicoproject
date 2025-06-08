@@ -23,6 +23,7 @@ body {
 }
 
 /* === HEADER BASE === */
+/* === HEADER BASE === */
 header {
   position: fixed;
   top: 0;
@@ -40,71 +41,187 @@ header {
   transition: all 0.3s ease;
 }
 
-header .logo {
-  vertical-align: middle;
+/* LOGO E TITOLO */
+.site-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 2.5em;
+  margin: 0;
+  padding: 20px 0;
+  transition: all 0.3s ease;
+}
+
+.logo {
   height: 60px;
   transition: height 0.3s ease;
 }
 
-header h1,
-header h2 {
-  text-align: center;
-  font-size: 2.5em;
-  margin: 0;
-  padding: 20px 0;
-  color: #fff;
-  transition: all 0.3s ease;
+.title-text {
+  display: inline-block;
+  transition: opacity 0.3s ease;
 }
 
-/* === HEADER SCROLL STATE === */
-header.scrolled h1 {
-  font-size: 2em;
-  padding: 10px 0;
+/* === NAVIGATION === */
+.header-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
 }
 
-header.scrolled h2 {
-  display: none; /* Nasconde sottotitolo se presente */
-}
-
-header.scrolled .logo {
-  height: 45px;
-}
-
-/* === DESKTOP: padding al body per compensare header fisso === */
+/* === DESKTOP STYLES === */
 @media (min-width: 769px) {
   body {
-    padding-top: 150px;
+    padding-top: 140px;
   }
 
+  .header-nav {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 40px;
+    margin-top: 10px;
+  }
+
+  .desktop-menu {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .desktop-menu li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: background-color 0.2s ease;
+  }
+
+  .desktop-menu li a:hover {
+    background-color: #333;
+  }
+
+  .dropdown {
+    display: none; /* Nasconde il menu mobile su desktop */
+  }
+
+  .header-contacts {
+    display: flex;
+    gap: 20px;
+  }
+
+  /* === SCROLLED HEADER (DESKTOP) === */
   header.scrolled {
+    padding: 10px 40px;
+  }
+
+  header.scrolled .site-title {
+    justify-content: flex-start;
+    font-size: 1.5em;
     padding: 10px 0;
   }
-}
 
-/* === MOBILE: padding minore === */
-@media (max-width: 768px) {
-  body {
-    padding-top: 90px;
-  }
-
-  header h2 {
-    display: block;
-    font-size: 1.2em;
-  }
-
-  header.scrolled h2 {
-    display: none;
-  }
-
-  header.scrolled {
-    padding: 10px 0;
+  header.scrolled .title-text {
+    opacity: 0;
+    visibility: hidden;
+    width: 0;
+    overflow: hidden;
   }
 
   header.scrolled .logo {
-    height: 50px;
+    height: 45px;
   }
 }
 
+/* === MOBILE STYLES === */
+@media (max-width: 768px) {
+  body {
+    padding-top: 110px;
+  }
+
+  .site-title {
+    font-size: 2em;
+    padding: 15px 0;
+    justify-content: center;
+  }
+
+  .logo {
+    height: 50px;
+  }
+
+  .title-text {
+    font-size: 1.2em;
+  }
+
+  .desktop-menu {
+    display: none;
+  }
+
+  .dropdown {
+    display: block;
+    text-align: center;
+  }
+
+  .dropdown .dropbtn {
+    background-color: transparent;
+    color: white;
+    font-size: 1em;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+  }
+
+  .dropdown-content {
+    display: none;
+    flex-direction: column;
+    background-color: #222;
+    border-radius: 10px;
+    margin-top: 5px;
+  }
+
+  .dropdown-content a {
+    color: #fff;
+    padding: 10px;
+    text-decoration: none;
+    display: block;
+  }
+
+  .dropdown-content a:hover {
+    background-color: #444;
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: flex;
+  }
+
+  .header-contacts {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+  }
+
+  /* === SCROLLED HEADER (MOBILE) === */
+  header.scrolled {
+    padding: 10px 0;
+  }
+
+  header.scrolled .site-title {
+    padding: 8px 0;
+    font-size: 1.5em;
+  }
+
+  header.scrolled .logo {
+    height: 45px;
+  }
+
+  header.scrolled .title-text {
+    display: none;
+  }
+}
 /* CONTAINER */
 .container {
   width: 90%;
