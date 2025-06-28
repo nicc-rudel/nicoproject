@@ -1,4 +1,4 @@
-//coockie
+//coockieMore actions
 document.addEventListener("DOMContentLoaded", function () {
     const banner = document.getElementById("cookieBanner");
     const acceptBtn = document.getElementById("acceptCookies");
@@ -51,28 +51,6 @@ document.addEventListener("DOMContentLoaded", function () {
         consent.style.display = "none";
     });
 });
-
-//modifica header quando si scrolla
-
-document.addEventListener("DOMContentLoaded", function () {
-const header = document.querySelector("header");
-
-function handleScroll() {
-  const isDesktop = window.innerWidth >= 769;
-  const scrollY = window.scrollY;
-
-  if (scrollY > 50) {
-    header.classList.add("scrolled");
-  } else {
-    header.classList.remove("scrolled");
-  }
-}
-
-window.addEventListener("scroll", handleScroll);
-window.addEventListener("resize", handleScroll);
-handleScroll(); // chiamata iniziale
-});
-
 
 //menù dropdown
 document.addEventListener("DOMContentLoaded", function () {
@@ -342,14 +320,14 @@ document.addEventListener("DOMContentLoaded", function () {
     button.addEventListener("click", function (event) {
         event.stopPropagation(); // Impedisce la propagazione del click
         dropdown.classList.toggle("show");
-        
+
     });
 
     // Chiude il menu se l'utente clicca fuori
     window.addEventListener("click", function (event) {
         if (!button.contains(event.target) && !dropdown.contains(event.target)) {
             dropdown.classList.remove("show");
-            
+
         }
     });
 
@@ -622,7 +600,7 @@ document.addEventListener("DOMContentLoaded", function () {
     y += 6;
     doc.setFont("helvetica", "bold");
     doc.text(`Totale stimato: €${data.totalCost.toFixed(2)}`, marginLeft, y);
-    
+
     if (data.notes.trim() !== "") {
       y += 10;
       doc.setFont("helvetica", "normal");
@@ -640,10 +618,3 @@ document.addEventListener("DOMContentLoaded", function () {
     doc.save("preventivo_luxurywood_pavimenti.pdf");
   });
 });
-
-
-
-
-
-
-
