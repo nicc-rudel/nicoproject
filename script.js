@@ -1,11 +1,8 @@
-//coockieMore actions
+
 document.addEventListener("DOMContentLoaded", function () {
     const banner = document.getElementById("cookieBanner");
     const acceptBtn = document.getElementById("acceptCookies");
-    const declineBtn = document.getElementById("declineCookies");
-    const continueBtn = document.getElementById("continueWithoutCookies"); // NUOVO
-    const consent = document.getElementById("cookieConsent");
-    const closeConsentBtn = document.getElementById("closeConsent");
+    const continueBtn = document.getElementById("continueWithoutCookies");
 
     function setCookie(name, value, days) {
         let expires = "";
@@ -23,32 +20,23 @@ document.addEventListener("DOMContentLoaded", function () {
         if (parts.length === 2) return parts.pop().split(";").shift();
     }
 
+    // Mostra il banner se non c'è consenso salvato né sessione attiva
     if (!getCookie("cookieAccepted") && !sessionStorage.getItem("noCookie")) {
         banner.style.display = "block";
-        consent.style.display = "none";
     } else {
         banner.style.display = "none";
-        consent.style.display = "none";
     }
 
+    // ✅ Accetta: salva per 1 giorno
     acceptBtn.addEventListener("click", function () {
-        setCookie("cookieAccepted", "true", 30);
+        setCookie("cookieAccepted", "true", 1);
         banner.style.display = "none";
     });
 
-    declineBtn.addEventListener("click", function () {
-        setCookie("cookieAccepted", "false", 30);
-        banner.style.display = "none";
-    });
-
-    // ✅ Nuovo pulsante: continua senza cookie
+    // ✅ Continua senza accettare: salva in sessione (non permanente)
     continueBtn.addEventListener("click", function () {
-        sessionStorage.setItem("noCookie", "true"); // solo per la sessione
+        sessionStorage.setItem("noCookie", "true");
         banner.style.display = "none";
-    });
-
-    closeConsentBtn.addEventListener("click", function () {
-        consent.style.display = "none";
     });
 });
 
@@ -111,6 +99,19 @@ document.addEventListener("DOMContentLoaded", function () {
             closeDropdown();
         });
     });
+});
+
+//cambio dimensioni header scroll
+window.addEventListener('scroll', function () {
+  const header = document.querySelector('header');
+
+  if (window.innerWidth <= 1223) {
+    if (window.scrollY > 50) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  }
 });
 
 
@@ -422,6 +423,73 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+  const images = document.querySelectorAll(".custom-image");
+  const modal = document.getElementById("modal");
+  const modalImg = document.getElementById("modalImg");
+  const closeBtn = document.querySelector(".close");
+  const prevBtn = document.querySelector(".prev");
+  const nextBtn = document.querySelector(".next");
+
+  let currentIndex = 0;
+
+  // Apri modal all'immagine cliccata
+  images.forEach((img, index) => {
+    img.addEventListener("click", () => {
+      currentIndex = index;
+      showImage(currentIndex);
+      modal.style.display = "block";
+    });
+  });
+
+  // Mostra immagine in modal secondo indice
+  function showImage(index) {
+    if (index < 0) {
+      currentIndex = images.length - 1;
+    } else if (index >= images.length) {
+      currentIndex = 0;
+    } else {
+      currentIndex = index;
+    }
+    modalImg.src = images[currentIndex].src;
+    modalImg.alt = images[currentIndex].alt;
+  }
+
+  // Pulsante chiudi
+  closeBtn.addEventListener("click", () => {
+    modal.style.display = "none";
+  });
+
+  // Freccia precedente
+  prevBtn.addEventListener("click", () => {
+    showImage(currentIndex - 1);
+  });
+
+  // Freccia successiva
+  nextBtn.addEventListener("click", () => {
+    showImage(currentIndex + 1);
+  });
+
+  // Chiudi modal cliccando fuori immagine
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      modal.style.display = "none";
+    }
+  });
+
+  // Navigazione con tastiera (opzionale)
+  document.addEventListener("keydown", (e) => {
+    if (modal.style.display === "block") {
+      if (e.key === "ArrowLeft") {
+        showImage(currentIndex - 1);
+      } else if (e.key === "ArrowRight") {
+        showImage(currentIndex + 1);
+      } else if (e.key === "Escape") {
+        modal.style.display = "none";
+      }
+    }
+  });
+});
 
 
 // Funzione per mostrare il preventivo
