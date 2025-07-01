@@ -34,7 +34,7 @@ header {
   top: 0;
   z-index: 999;
   background-color: #000; /* fallback visivo */
-  background-image: url('img/background-header.jpg');
+  background-image: img/background-header.jpg;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
