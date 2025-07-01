@@ -1,3 +1,4 @@
+
 /*transizione da menù a sezione*/
 html {
   scroll-behavior: smooth;
@@ -15,214 +16,264 @@ width: 90%;
 margin: 0 auto;
 }
 
+/* 🔧 Reset base */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
 /* 🏠 Header */
-/* HEADER BASE */
 header {
-background-image: url('img/background-header.jpg');
-background-size: cover;
-background-repeat: no-repeat;
-background-position: center;
-color: #ffffff;
-padding: 10px 0;
+  position: sticky; /* rimane in alto durante lo scroll */
+  top: 0;
+  z-index: 999;
+  background-color: #000; /* fallback visivo */
+  background-image: url('img/background-header.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  color: #ffffff;
+  padding: 10px 0;
 }
 
+/* Logo */
 header .logo {
-vertical-align: middle;
+  vertical-align: middle;
+  margin-right: 10px;
 }
 
+/* Titoli header */
 header h1,
 header h2 {
-text-align: center;
-font-size: 2.5em;
-margin: 0;
-padding: 20px 0;
-color: #fff;
+  margin: 0;
+  padding: 20px 0;
+  font-size: 2.5em;
+  text-align: center;
+  color: #fff;
 }
 
-/* CONTAINER */
+/* 📦 Container */
 .container {
-max-width: 1200px;
-margin: 0 auto;
-padding: 0 20px;
-/*text-align: left;*/
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
-/* HEADER NAV BASE */
+/* 🧭 Navigazione */
 .header-nav {
-display: flex;
-flex-direction: column;
-align-items: center;
-gap: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
 }
 
-/* DROPDOWN MOBILE */
+/* 📱 Dropdown menu mobile */
 .dropdown {
-position: relative;
-display: block;
+  position: relative;
+  display: block;
 }
 
 .dropbtn {
-background-color: #333;
-color: white;
-padding: 10px 16px;
-font-size: 16px;
-border: none;
-border-radius: 6px;
-cursor: pointer;
+  background-color: #333;
+  color: white;
+  padding: 10px 16px;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
 }
 
 .dropdown-content {
-display: none;
-position: absolute;
-background-color: #222;
-min-width: 200px;
-box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-z-index: 1;
-border-radius: 6px;
+  display: none;
+  position: absolute;
+  background-color: #222;
+  min-width: 200px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  border-radius: 6px;
 }
 
 .dropdown-content a {
-color: #fff;
-padding: 10px 14px;
-text-decoration: none;
-display: block;
+  color: #fff;
+  padding: 10px 14px;
+  text-decoration: none;
+  display: block;
 }
 
 .dropdown-content a:hover {
-background-color: #444;
+  background-color: #444;
 }
 
 .dropdown:hover .dropdown-content {
-display: block;
+  display: block;
 }
 
-/* DESKTOP MENU (visibile solo su desktop) */
+/* 🖥️ Desktop menu */
 .desktop-menu {
-display: none;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 20px;
 }
 
-/* HEADER CONTACTS */
+/* 📞 Contatti */
 .header-contacts {
-display: none;
+  display: none; /* visibile solo su desktop */
+  gap: 20px;
 }
 
-/* CONTACT LINK STILE */
 .contact-link {
-color: #333;
-font-size: 20px;
-text-decoration: none;
-transition: opacity 0.2s ease;
+  color: #333;
+  font-size: 20px;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
 }
 
 .contact-link:hover {
-opacity: 0.7;
+  opacity: 0.7;
 }
 
-/* BOX NUMERO TELEFONO */
 .contact-box {
-background-color: #333;
-color: #fff;
-padding: 8px 14px;
-border-radius: 6px;
-text-decoration: none;
-font-weight: bold;
-font-size: 20px;
-display: inline-block;
-border: 1px solid #fff;
-transition: background-color 0.3s ease, color 0.3s ease;
+  background-color: #333;
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 20px;
+  display: inline-block;
+  border: 1px solid #fff;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .contact-box:hover {
-background-color: #ffffff55;
-color: #000;
+  background-color: #ffffff55;
+  color: #000;
 }
 
-/* DESKTOP STYLES */
-@media (min-width: 769px) {
-header h1,
-header h2,
-header nav {
-text-align: left;
-padding-left: 40px;
+/* 💻 Stili Desktop */
+@media (min-width: 1224px) {
+  header h1,
+  header h2,
+  header nav {
+    text-align: left;
+    padding-left: 40px;
+  }
+
+  header h1 {
+    font-size: 3em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  header h2 {
+    font-size: 1.5em;
+    margin-top: 5px;
+  }
+
+  .header-nav {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    margin-top: 10px;
+  }
+
+  .desktop-menu {
+    display: flex;
+  }
+
+  .desktop-menu li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: background-color 0.2s ease;
+  }
+
+  .desktop-menu li a:hover {
+    background-color: #333;
+  }
+
+  .dropdown {
+    display: none;
+  }
+
+  .header-contacts {
+    display: flex;
+  }
 }
 
-header h1 {
-font-size: 3em;
-display: flex;
-align-items: center;
-gap: 10px;
-}
-
-header h2 {
-font-size: 1.5em;
-margin-top: 5px;
-}
-
-header .logo {
-margin-right: 10px;
-vertical-align: middle;
-}
-
-.header-nav {
-flex-direction: row;
-justify-content: space-between;
-align-items: center;
-padding: 0 40px;
-margin-top: 10px;
-}
-
-.desktop-menu {
-display: flex;
-gap: 20px;
-list-style: none;
-margin: 0;
-padding: 0;
-}
-
-.desktop-menu li a {
-color: #fff;
-text-decoration: none;
-font-weight: bold;
-padding: 8px 12px;
-border-radius: 6px;
-transition: background-color 0.2s ease;
-}
-
-.desktop-menu li a:hover {
-background-color: #333;
-}
-
-.dropdown {
-display: none; /* Nasconde dropdown su desktop */
-}
-
-.header-contacts {
-display: flex;
-gap: 20px;
-}
-}
-
-
-/* MOBILE STYLES */
-
-/*prima era 768px, prova con 1224px*/
+/* 📱 Stili Mobile */
 @media (max-width: 1223px) {
-.desktop-menu {
-display: none;
+  .desktop-menu {
+    display: none;
+  }
+
+  .header-nav {
+    justify-content: center;
+  }
+
+  .dropdown {
+    display: block;
+  }
+
+  .header-contacts {
+    display: none;
+  }
+}
+section,
+[id^="servizi"],
+[id^="chi-siamo"],
+[id^="foto-lavori"],
+[id^="preventivo"],
+[id^="contatti"] {
+  scroll-margin-top: 171px; /* altezza dell'header */
+}
+/* MOBILE HEADER COMPATTO SU SCROLL */
+@media (max-width: 1223px) {
+  header.scrolled {
+    padding: 5px 0;
+    transition: padding 0.3s ease;
+  }
+
+  header.scrolled h1 {
+    font-size: 1.4em;
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: flex-start;
+  }
+
+  header.scrolled .logo {
+    width: 40px;
+    height: 40px;
+  }
+
+  header.scrolled .header-nav {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+  }
+
+  header.scrolled .dropbtn {
+    padding: 6px 10px;
+    font-size: 14px;
+  }
 }
 
-.header-nav{
-justify-content: center;
-}
 
-.dropdown {
-display: block;
-}
 
-.header-contacts {
-display: none;
-}
-}
 
 /* 🍪 Banner dei cookie */
 .cookie-banner {
@@ -582,40 +633,40 @@ z-index: 10;
 
 /* 📷 Modal per immagini */
 .modal {
-display: none;
-position: fixed;
-z-index: 200;
-left: 0;
-top: 0;
-width: 100%;
-height: 100%;
-background-color: rgba(0, 0, 0, 0.8);
-text-align: center;
-padding-top: 50px;
+  display: none;
+  position: fixed;
+  z-index: 200;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+
+  display: flex;
+  justify-content: center; /* orizzontale */
+  align-items: center;     /* verticale */
+
+  padding: 0;
+  margin: 0;
+  text-align: center; /* opzionale */
 }
 
 .modal-content {
-max-width: 100%; /* Riduce le dimensioni dell'immagine */
-max-height: 70vh; /* Evita che l'immagine sia troppo alta */
-display: block;
-margin: auto; /* Centra perfettamente */
-border-radius: 20px;
-box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+  max-width: 90vw;   /* massima larghezza 90% viewport width */
+  max-height: 90vh;  /* massima altezza 90% viewport height */
+  border: 0.5px white;
+  border-radius: 3px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
-.close, .prev, .next {
+/*non funziona perchè ha lo stesso modal del carosello*/
+.prev, .next {
 position: absolute;
 top: 50%;
 color: white;
 font-size: 30px;
 cursor: pointer;
 user-select: none;
-}
-
-.close {
-top: 10px;
-right: 20px;
-font-size: 40px;
 }
 
 .prev {
@@ -625,8 +676,6 @@ left: 20px;
 .next {
 right: 20px;
 }
-
-
 
 /* ❌ Pulsante di chiusura */
 .close {
