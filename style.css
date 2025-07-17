@@ -16,12 +16,13 @@ width: 90%;
 margin: 0 auto;
 }
 
-/* 🔧 Reset base */
+/* 🔧 Reset base 
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
+*/
 
 body {
   margin: 0;
