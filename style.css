@@ -33,7 +33,7 @@ header {
   position: sticky; /* rimane in alto durante lo scroll */
   top: 0;
   z-index: 999;
-  background-color:#fef5e3;
+  background-color: #fef5e3;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -45,6 +45,8 @@ header {
 header .logo {
   vertical-align: middle;
   margin-right: 10px;
+  width: 120px; /* dimensione aumentata del logo */
+  height: auto; /* mantiene le proporzioni */
 }
 
 /* Titoli header */
