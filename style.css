@@ -33,8 +33,7 @@ header {
   position: sticky; /* rimane in alto durante lo scroll */
   top: 0;
   z-index: 999;
-  background-color: #000; /* fallback visivo */
-  background-image: url('img/background-header.jpg');
+  background-color:#fef5e3;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
