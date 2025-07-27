@@ -104,6 +104,7 @@ document.addEventListener("DOMContentLoaded", function () {
 //cambio dimensioni header scroll
 window.addEventListener('scroll', function () {
   const header = document.querySelector('header');
+  
 
   if (window.innerWidth <= 1223) {
     if (window.scrollY > 50) {
@@ -258,19 +259,19 @@ document.addEventListener("DOMContentLoaded", function () {
    ***************************************/
   // Apertura del modal: cliccando sul bottone "scopri di più"
   const openModalButtons = document.querySelectorAll(".open-modal");
+  
   openModalButtons.forEach(button => {
     button.addEventListener("click", function () {
       const nav = document.getElementsByTagName("nav")[0];
       const modalId = this.dataset.modal;
       const modal = document.getElementById(modalId);
       if (modal) {
-        modal.style.display = "block";
+        modal.style.display = "flex";
         // Ferma l'auto slide e l'animazione della progress bar
         clearInterval(autoSlideInterval);
         if (progressBar) {
           progressBar.style.transition = "none";
         }
-        nav.style.display="none";
       }
     });
   });

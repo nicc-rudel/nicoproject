@@ -271,6 +271,7 @@ section,
   header.scrolled .dropbtn {
     padding: 6px 10px;
     font-size: 14px;
+    margin: auto;
   }
 }
 
@@ -644,7 +645,7 @@ z-index: 10;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.8);
 
-  display: flex;
+  /*display: flex;*/
   justify-content: center; /* orizzontale */
   align-items: center;     /* verticale */
 
