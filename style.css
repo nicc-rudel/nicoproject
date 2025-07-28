@@ -46,7 +46,7 @@ header {
 header .logo {
   vertical-align: middle;
   margin-right: 10px;
-  width: 250px; /* dimensione aumentata del logo */
+  width: 300px; /* dimensione aumentata del logo */
   height: auto; /* mantiene le proporzioni */
 }
 
